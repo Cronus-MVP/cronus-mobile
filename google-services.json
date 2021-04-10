@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975409649052",
+    "project_id": "queueme-42acd",
+    "storage_bucket": "queueme-42acd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975409649052:android:aae8fea97ac21979d46459",
+        "android_client_info": {
+          "package_name": "com.reactnativefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975409649052-05m9ju2begrqvskhs2u4v2h6faq5j3vn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs7Uw98DLhQoXTl9xLttLH9xEjbQMPV3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975409649052-05m9ju2begrqvskhs2u4v2h6faq5j3vn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
