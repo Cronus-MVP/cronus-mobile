@@ -5,7 +5,8 @@ import styles from './styles';
 import { firebase } from '../../firebase/config';
 
 export default function RegistrationScreen({navigation}) {
-    const [fullName, setFullName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -27,7 +28,7 @@ export default function RegistrationScreen({navigation}) {
                 const data = {
                     id: uid,
                     email,
-                    fullName,
+                    firstName,
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
@@ -52,14 +53,23 @@ export default function RegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../../assets/cronus-logo.png')}
+                    source={require('../../../assets/cronus-logo2.png')}
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder='Full Name'
+                    placeholder='First Name'
                     placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setFullName(text)}
-                    value={fullName}
+                    onChangeText={(text) => setFirstName(text)}
+                    value={firstName}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder='Last Name'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setLastName(text)}
+                    value={lastName}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />

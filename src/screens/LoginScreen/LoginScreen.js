@@ -49,7 +49,7 @@ export default function LoginScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../../assets/cronus-logo.png')}
+                    source={require('../../../assets/cronus-logo2.png')}
                 />
                 <TextInput
                     style={styles.input}
