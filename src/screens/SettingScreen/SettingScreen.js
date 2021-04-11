@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
 
-function Settings(props) {
+function SettingScreen(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Settings Tab</Text>
@@ -10,4 +10,4 @@ function Settings(props) {
   )
 }
 
-export default Settings
+export default SettingScreen;

@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
 
-function Profile(props) {
+function MyAppointmentScreen(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Profile Tab</Text>
+      <Text style={styles.text}>MyAppointments Tab</Text>
     </View>
   )
 }
 
-export default Profile
+export default MyAppointmentScreen;

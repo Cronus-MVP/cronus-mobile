@@ -3,62 +3,178 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Home from '../screens/HomeScreen/HomeScreen'
-import Settings from '../screens/Settings/Settings'
-import MyAppointments from '../screens/MyAppointments/MyAppointments'
-import Profile from '../screens/Profile/Profile'
-import Login from '../screens/LoginScreen/LoginScreen'
-import Registration from '../screens/RegistrationScreen/RegistrationScreen'
+import HomeScreen from '../screens/HomeScreen/HomeScreen'
+import SettingScreen from '../screens/SettingScreen/SettingScreen'
+import MyAppointmentScreen from '../screens/MyAppointmentScreen/MyAppointmentScreen'
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
+import LoginScreen from '../screens/LoginScreen/LoginScreen'
+import RegistrationScreen from '../screens/RegistrationScreen/RegistrationScreen'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
-function getHeaderTitle(route) {
-  const routeName = route.state
-    ? route.state.routes[route.state.index].name
-    : route.params?.screen || 'Home'
-
-  switch (routeName) {
-    case 'Home':
-      return 'Home'
-    case 'Profile':
-      return 'Profile'
-    case 'MyAppointments':
-        return 'MyAppointments'
-  }
-}
-
-function MainTabNavigator() {
+function HomeStack(){
   return (
-    <Tab.Navigator
-      tabBarOptions={{
-        activeTintColor: '#101010',
-        style: {
-          backgroundColor: '#ffd700'
-        }
-      }}
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName
-          if (route.name == 'Home') {
-            iconName = 'ios-home'
-          } else if (route.name == 'Profile') {
-            iconName = 'ios-person'
-          }else if (route.name == 'MyAppointments') {
-            iconName = 'ios-person'
-          }
-          return <Ionicons name={iconName} color={color} size={size} />
-        }
-      })}>
-      <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='Profile' component={Profile} />
-      <Tab.Screen name='MyAppointments' component={MyAppointments} />
-    </Tab.Navigator>
-  )
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="MyAppointments"
+        component={MyAppointmentScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown:false }}
+      />
+    </Stack.Navigator>
+  );
 }
 
+function SettingsStack(){
+  return (
+    <Stack.Navigator
+      initialRouteName="Settings"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="MyAppointments"
+        component={MyAppointmentScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingScreen}
+        options={{ headerShown:false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
-function MainStackNavigator() {
+function ProfileStack(){
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="MyAppointments"
+        component={MyAppointmentScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingScreen}
+        options={{ headerShown:false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function LoginStack(){
+  return (
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="Login"
+        component={LoginStack}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      <Stack.Screen
+        name="Registration"
+        component={RegistrationScreen}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      </Stack.Navigator>
+      );
+}
+
+function MyAppointmentsStack(){
+  return (
+    <Stack.Navigator
+      initialRouteName="MyAppointments"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="MyAppointments"
+        component={MyAppointmentScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingScreen}
+        options={{ headerShown:false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -66,51 +182,97 @@ function MainStackNavigator() {
         screenOptions={{
           gestureEnabled: true,
           headerStyle: {
-            backgroundColor: '#101010'
+            backgroundColor: '#ffba3b'
           },
           headerTitleStyle: {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            color: 'white'
           },
-          headerTintColor: '#ffd700',
+          headerTintColor: '#ffba3b',
           headerBackTitleVisible: false
         }}
         headerMode='float'>
         <Stack.Screen
           name='Login'
-          component={Login}
-          options={{ title: 'Login' }}
+          component={LoginScreen}
+          options={{ headerShown:false }}
         />
         <Stack.Screen
           name='Registration'
-          component={Registration}
-          options={{ title: 'Registration' }}
+          component={RegistrationScreen}
+          options={{ headerShown:false }}
         />
         <Stack.Screen
           name='Home'
-          component={Home}
-          options={{ title: 'Home' }
+          component={TabNavigator}
+          options={{ headerShown:false }
         }
         />
-        {/* <Stack.Screen
-          name='MyAppointments'
-          component={MyAppointments}
-          options={({ route }) => ({
-            title: route.params.item.name
-          })}
-        /> */}
-        <Stack.Screen
-          name='Settings'
-          component={Settings}
-          options={{ title: 'Settings' }}
-        />
-        {/* <Stack.Screen
-          name='Profile'
-          component={Profile}
-          options={{ title: 'Profile' }}
-        /> */}
       </Stack.Navigator>
-    </NavigationContainer>
-  )
+  </NavigationContainer>
+  );
 }
 
-export default MainStackNavigator
+export function TabNavigator (){
+  return (
+      <Tab.Navigator
+        initialRouteName="Home"
+        tabBarOptions={{
+          activeTintColor: '#ffba3b',
+        }}>
+        <Tab.Screen
+          name="Home"
+          component={HomeStack}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="ios-home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="MyAppointmentsStack"
+          component={MyAppointmentsStack}
+          options={{
+            tabBarLabel: 'My Appointments',
+            tabBarIcon: ({ color, size }) => (
+              <Icon
+                name="ios-calendar"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ProfileStack"
+          component={ProfileStack}
+          options={{
+            tabBarLabel: 'Profile',
+            tabBarIcon: ({ color, size }) => (
+              <Icon
+                name="ios-person"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="SettingsStack"
+          component={SettingsStack}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <Icon
+                name="ios-settings"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+  );
+  
+}

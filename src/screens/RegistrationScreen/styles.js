@@ -27,7 +27,7 @@ export default StyleSheet.create({
         paddingLeft: 16
     },
     button: {
-        backgroundColor: '#788eec',
+        backgroundColor: '#ffba3b',
         marginLeft: 30,
         marginRight: 30,
         marginTop: 20,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
         color: '#2e2e2d'
     },
     footerLink: {
-        color: "#788eec",
+        color: "#ffba3b",
         fontWeight: "bold",
         fontSize: 16
     }

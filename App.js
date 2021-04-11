@@ -7,7 +7,7 @@ import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 import { firebase } from './src/firebase/config'
-import MainStackNavigator from './src/navigation/MainStackNavigator'
+import {RootNavigator} from './src/navigation/MainStackNavigator'
 
 
 const Stack = createStackNavigator();
@@ -16,6 +16,7 @@ export default function App() {
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+
 
   // if (loading) {	
   //   return (	
@@ -32,7 +33,7 @@ export default function App() {
   //         .get()
   //         .then((document) => {
   //           const userData = document.data()
-  //           console.log("Use effect working!!", userData, loading);
+  //           // console.log("Use effect working!!", userData, loading);
   //           setLoading(false)
   //           setUser(userData)
   //         })
@@ -61,6 +62,6 @@ export default function App() {
   //     </Stack.Navigator>
   //   </NavigationContainer> 
   // );
-  return <MainStackNavigator />
+  return <RootNavigator/> 
 
 }

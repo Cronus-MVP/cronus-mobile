@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View} from 'react-native'
+import { FlatList, Keyboard, Text, TouchableOpacity, View} from 'react-native'
 import styles from './styles';
 import { firebase } from '../../firebase/config'
-import LoginScreen from '../LoginScreen/LoginScreen';
-import RegistrationScreen from '../RegistrationScreen/RegistrationScreen';
+// import {MainStackNavigator} from '../../navigation/MainStackNavigator'
 
 export default function HomeScreen(props) {
 
@@ -11,12 +10,15 @@ export default function HomeScreen(props) {
     const [entities, setEntities] = useState([])
 
     const entityRef = firebase.firestore().collection('entities')
-    console.log("Props: ", props);
-    const userID = props.route.params.user.id;
-    const userName = props.route.params.user.fullName;
+    // console.log("Props: ", props);
+    const userID = props?.route?.params?.user?.id;
+    const userName = props?.route?.params?.user?.fullName;
+
+
 
     useEffect(() => {
-        entityRef
+        userID?(
+            entityRef
             .where("authorID", "==", userID)
             .orderBy('createdAt', 'desc')
             .onSnapshot(
@@ -31,8 +33,10 @@ export default function HomeScreen(props) {
                 },
                 error => {
                     console.log(error)
-                }
+                },
+            console.log("USER ID: ", userID),
             )
+        ): console.log("Error!!")
     }, [])
 
     const onAddButtonPress = () => {
