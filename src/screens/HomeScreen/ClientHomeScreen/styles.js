@@ -52,5 +52,11 @@ export default StyleSheet.create({
     entityText: {
         fontSize: 20,
         color: '#333333'
-    }
+    },
+    text: {
+        color: '#101010',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 60
+      }
 })
