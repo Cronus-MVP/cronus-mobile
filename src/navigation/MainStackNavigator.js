@@ -7,8 +7,11 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen'
 import SettingScreen from '../screens/SettingScreen/SettingScreen'
 import MyAppointmentScreen from '../screens/MyAppointmentScreen/MyAppointmentScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
-import LoginScreen from '../screens/LoginScreen/LoginScreen'
-import RegistrationScreen from '../screens/RegistrationScreen/RegistrationScreen'
+import LandingScreen from '../screens/LandingScreen/LandingScreen'
+import ClientLoginScreen from '../screens/LoginScreen/ClientLoginScreen/ClientLoginScreen'
+import VendorLoginScreen from '../screens/LoginScreen/VendorloginScreen/VendorLoginScreen'
+import ClientRegistrationScreen from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationScreen'
+import VendorRegistrationScreen from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationScreen'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator()
@@ -44,8 +47,8 @@ function HomeStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="Login"
-        component={LoginScreen}
+        name="ClientLogin"
+        component={ClientLoginScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -178,7 +181,7 @@ export function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Login'
+        initialRouteName='Landing'
         screenOptions={{
           gestureEnabled: true,
           headerStyle: {
@@ -193,13 +196,28 @@ export function RootNavigator() {
         }}
         headerMode='float'>
         <Stack.Screen
-          name='Login'
-          component={LoginScreen}
+          name='Landing'
+          component={LandingScreen}
           options={{ headerShown:false }}
         />
         <Stack.Screen
-          name='Registration'
-          component={RegistrationScreen}
+          name='ClientLogin'
+          component={ClientLoginScreen}
+          options={{ headerShown:false }}
+        />
+        <Stack.Screen
+          name='VendorLogin'
+          component={VendorLoginScreen}
+          options={{ headerShown:false }}
+        />
+        <Stack.Screen
+          name='ClientRegistration'
+          component={ClientRegistrationScreen}
+          options={{ headerShown:false }}
+        />
+        <Stack.Screen
+          name='VendorRegistration'
+          component={VendorRegistrationScreen}
           options={{ headerShown:false }}
         />
         <Stack.Screen
