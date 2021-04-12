@@ -54,5 +54,14 @@ export default StyleSheet.create({
         color: "#ffba3b",
         fontWeight: "bold",
         fontSize: 16
-    }
+    },
+    text: {
+        color: '#101010',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20,
+        marginBottom:40,
+        textAlign: 'center',
+      }
+
 })

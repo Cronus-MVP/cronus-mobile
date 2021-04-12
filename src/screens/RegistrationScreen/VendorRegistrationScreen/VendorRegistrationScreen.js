@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-import { firebase } from '../../firebase/config';
+import { firebase } from '../../../firebase/config';
 
-export default function RegistrationScreen({navigation}) {
+export default function VendorRegistrationScreen({navigation}) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -53,8 +53,9 @@ export default function RegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../../assets/cronus-logo2.png')}
+                    source={require('../../../../assets/cronus-logo2.png')}
                 />
+                <Text style={styles.text}>Get your business started with Cronus!</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='First Name'
