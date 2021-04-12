@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './styles';
 import { firebase } from '../../../firebase/config';
 
-export default function VendorRegistrationScreen({navigation}) {
+export default function ClientRegistrationLocation({navigation}) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -12,7 +12,7 @@ export default function VendorRegistrationScreen({navigation}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('VendorLogin')
+        navigation.navigate('ClientLogin')
     }
 
     const onRegisterPress = () => {
@@ -29,13 +29,14 @@ export default function VendorRegistrationScreen({navigation}) {
                     id: uid,
                     email,
                     firstName,
+                    lastName,
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('VendorHome', {user: data})
+                        navigation.navigate('ClientHome', {user: data})
                     })
                     .catch((error) => {
                         alert(error)
@@ -55,7 +56,7 @@ export default function VendorRegistrationScreen({navigation}) {
                     style={styles.logo}
                     source={require('../../../../assets/cronus-logo.png')}
                 />
-                <Text style={styles.text}>Get your business started with Cronus!</Text>
+                <Text style={styles.text}>Get started with Cronus!</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='First Name'

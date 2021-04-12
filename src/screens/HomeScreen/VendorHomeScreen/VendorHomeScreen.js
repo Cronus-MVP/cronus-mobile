@@ -80,8 +80,8 @@ export default function VendorHomeScreen(props) {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.text}>Vendor Home</Text>
             <View style={styles.formContainer}>
-                <Text style={styles.text}>Vendor Home</Text>
                 <Text h1>Hi {userName}!</Text>
             </View>
             <TouchableOpacity

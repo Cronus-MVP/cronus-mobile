@@ -80,8 +80,8 @@ export default function ClientHomeScreen(props) {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.text}>Client Home</Text>
             <View style={styles.formContainer}>
-                <Text style={styles.text}>Client Home</Text>
                 <Text h1>Hi {userName}!</Text>
             </View>
             <TouchableOpacity

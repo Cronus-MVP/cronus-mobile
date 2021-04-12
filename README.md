@@ -39,6 +39,7 @@ To setup the development environment, install all dependencies.
 ```
 cd cronus-mobile
 yarn
+npm install
 ```
 
 ### Set up Cocoapods in ios
