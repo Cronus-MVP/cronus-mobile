@@ -29,6 +29,7 @@ export default function ClientRegistrationScreen({navigation}) {
                     id: uid,
                     email,
                     firstName,
+                    lastName,
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
@@ -53,7 +54,7 @@ export default function ClientRegistrationScreen({navigation}) {
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
-                    source={require('../../../../assets/cronus-logo2.png')}
+                    source={require('../../../../assets/cronus-logo.png')}
                 />
                 <Text style={styles.text}>Get started with Cronus!</Text>
                 <TextInput
