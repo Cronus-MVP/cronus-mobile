@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList, Keyboard, Text, TouchableOpacity, View} from 'react-native'
 import styles from './styles';
-import { firebase } from '../../firebase/config'
+import { firebase } from '../../../firebase/config'
 // import {MainStackNavigator} from '../../navigation/MainStackNavigator'
 
-export default function HomeScreen(props) {
+export default function VendorHomeScreen(props) {
 
     const [entityText, setEntityText] = useState('')
     const [entities, setEntities] = useState([])
@@ -72,7 +72,7 @@ export default function HomeScreen(props) {
     const onLogoutPress = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign out successful!");
-            props.navigation.navigate('Login');
+            props.navigation.navigate('VendorLogin');
           }).catch((error) => {
             console.log("Error: ", error);
           });
@@ -81,6 +81,7 @@ export default function HomeScreen(props) {
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
+                <Text style={styles.text}>Vendor Home</Text>
                 <Text h1>Hi {userName}!</Text>
             </View>
             <TouchableOpacity

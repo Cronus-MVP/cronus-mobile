@@ -12,7 +12,7 @@ export default function ClientRegistrationScreen({navigation}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Login')
+        navigation.navigate('ClientLogin')
     }
 
     const onRegisterPress = () => {
@@ -35,7 +35,7 @@ export default function ClientRegistrationScreen({navigation}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('Login', {user: data})
+                        navigation.navigate('ClientHome', {user: data})
                     })
                     .catch((error) => {
                         alert(error)

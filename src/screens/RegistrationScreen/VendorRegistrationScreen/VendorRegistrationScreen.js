@@ -12,7 +12,7 @@ export default function VendorRegistrationScreen({navigation}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Login')
+        navigation.navigate('VendorLogin')
     }
 
     const onRegisterPress = () => {
@@ -35,7 +35,7 @@ export default function VendorRegistrationScreen({navigation}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('Login', {user: data})
+                        navigation.navigate('VendorHome', {user: data})
                     })
                     .catch((error) => {
                         alert(error)
