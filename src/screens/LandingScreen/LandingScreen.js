@@ -16,7 +16,7 @@ function LandingScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Take me to...</Text>
+      <Text style={styles.text}>Take me to..</Text>
 
         <TouchableOpacity
             style={styles.button}
@@ -24,7 +24,7 @@ function LandingScreen({navigation}) {
             <Text style={styles.buttonTitle}>My Personal Account</Text>
         </TouchableOpacity>
 
-    <Text style={styles.text}>Or</Text>
+    {/* <Text style={styles.text}>Or</Text> */}
         <TouchableOpacity
             style={styles.button}
             onPress={() => onBusinessPress()}>
