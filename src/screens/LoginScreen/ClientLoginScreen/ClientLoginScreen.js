@@ -11,7 +11,7 @@ export default function ClientLoginScreen({navigation}) {
 
     const onFooterLinkPress = () => {
         console.log(navigation.navigate, "NAVIGATION!!")
-        navigation.navigate('ClientRegistration')
+        navigation.navigate('ClientRegistrationScreen')
     }
 
     const onLoginPress = () => {
