@@ -1,50 +1,55 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState, useRef } from 'react'
+import { Image, Text, TextInput, TouchableOpacity, View, Button } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-import { firebase } from '../../../firebase/config';
 
 export default function ClientRegistrationScreen({navigation}) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [phone, setPhone] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('ClientLogin')
+        console.log("Here")
+        navigation.navigate('ClientLoginScreen')
     }
 
-    const onRegisterPress = () => {
-        if (password !== confirmPassword) {
-            alert("Passwords don't match.")
-            return
+    const onNextPress = () => {
+        // if (password !== confirmPassword) {
+        //     alert("Passwords don't match.")
+        //     return
+        // }
+        const data = {
+            email,
+            firstName,
+            lastName,
+            phone
+        };
+        if(checkTextInput()==true){
+            console.log("HERE")
+            navigation.navigate('ClientRegistrationLocation', {data})
         }
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then((response) => {
-                const uid = response.user.uid
-                const data = {
-                    id: uid,
-                    email,
-                    firstName,
-                    lastName,
-                };
-                const usersRef = firebase.firestore().collection('users')
-                usersRef
-                    .doc(uid)
-                    .set(data)
-                    .then(() => {
-                        navigation.navigate('ClientHome', {user: data})
-                    })
-                    .catch((error) => {
-                        alert(error)
-                    });
-            })
-            .catch((error) => {
-                alert(error)
-        });
+        return;
+        
+
+        
+    }
+
+    const checkTextInput = () => {
+        if (!firstName.trim()) {
+            alert('Please Enter First Name');
+            return false;
+        }else if (!lastName.trim()) {
+            alert('Please Enter Last Name');
+            return false;
+        }else if (!email.trim()) {
+            alert('Please Enter Email');
+            return false;
+        }else if (!phone.trim()) {
+            alert('Please Enter Phone Number');
+            return false;
+        }
+        return true;
     }
 
     return (
@@ -83,32 +88,41 @@ export default function ClientRegistrationScreen({navigation}) {
                     value={email}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                    keyboardType={'email-address'}
                 />
                 <TextInput
                     style={styles.input}
+                    placeholder='Phone'
                     placeholderTextColor="#aaaaaa"
-                    secureTextEntry
-                    placeholder='Password'
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
+                    onChangeText={(text) => setPhone(text)}
+                    value={phone}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                    keyboardType={'phone-pad'}
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholderTextColor="#aaaaaa"
-                    secureTextEntry
-                    placeholder='Confirm Password'
-                    onChangeText={(text) => setConfirmPassword(text)}
-                    value={confirmPassword}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
+                        
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => onRegisterPress()}>
-                    <Text style={styles.buttonTitle}>Create account</Text>
+                    onPress={() => onNextPress()}>
+                    <Text style={styles.buttonTitle}>Next</Text>
                 </TouchableOpacity>
+
+                {/* <View style={{ flexDirection:"row" }}>
+                <View style={styles.buttonStyle}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigation.navigate('ClientLogin')}>
+                    <Text style={styles.buttonNext}>Back</Text>
+                </TouchableOpacity>  
+                    </View>
+                    <View style={styles.buttonStyle}>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => navigation.navigate('ClientRegistrationLocation')}>
+                        <Text style={styles.buttonNext}>Next</Text>
+                </TouchableOpacity>
+                    </View>
+                </View> */}
                 <View style={styles.footerView}>
                     <Text style={styles.footerText}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
                 </View>

@@ -41,6 +41,21 @@ export default StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold"
     },
+    buttonNext: {
+        backgroundColor: '#3d3b36',
+        marginLeft: 30,
+        marginRight: 30,
+        marginTop: 20,
+        height: 48,
+        borderRadius: 5,
+        alignItems: "center",
+        justifyContent: 'center'
+    },
+    buttonTitleNext: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: "bold"
+    },
     footerView: {
         flex: 1,
         alignItems: "center",
@@ -62,5 +77,6 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom:40,
         textAlign: 'center',
-      }
+      },
+
 })

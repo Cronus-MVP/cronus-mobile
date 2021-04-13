@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styles from './styles';
 import { firebase } from '../../../firebase/config';
 
-export default function ClientRegistrationLocation({navigation}) {
+export default function ClientRegistrationLocation({navigation,route}) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -47,6 +47,8 @@ export default function ClientRegistrationLocation({navigation}) {
         });
     }
 
+    console.log("DATA: ",route.params.data)
+
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
@@ -56,34 +58,7 @@ export default function ClientRegistrationLocation({navigation}) {
                     style={styles.logo}
                     source={require('../../../../assets/cronus-logo.png')}
                 />
-                <Text style={styles.text}>Get started with Cronus!</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder='First Name'
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setFirstName(text)}
-                    value={firstName}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder='Last Name'
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setLastName(text)}
-                    value={lastName}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder='E-mail'
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setEmail(text)}
-                    value={email}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
+                <Text style={styles.text}>Almost there!</Text>
                 <TextInput
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"
@@ -109,9 +84,12 @@ export default function ClientRegistrationLocation({navigation}) {
                     onPress={() => onRegisterPress()}>
                     <Text style={styles.buttonTitle}>Create account</Text>
                 </TouchableOpacity>
-                <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
-                </View>
+                <TouchableOpacity
+                    style={styles.buttonNext}
+                    onPress={() => navigation.navigate('ClientRegistrationScreen')}>
+                    <Text style={styles.buttonTitleNext}>Back</Text>
+                </TouchableOpacity>
+                
             </KeyboardAwareScrollView>
         </View>
     )
