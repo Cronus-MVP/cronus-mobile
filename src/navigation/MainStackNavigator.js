@@ -211,7 +211,7 @@ function ClientLoginStack(){
       />
       <Stack.Screen
         name="ClientHome"
-        component={ClientHomeScreen}
+        component={ClientTabNavigator}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       </Stack.Navigator>
