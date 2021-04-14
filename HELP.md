@@ -9,7 +9,7 @@ For HTTPS: ```https://github.com/Cronus-MVP/cronus-mobile.git```
 
 ### Step 2: Make sure you have the latest development branch
 ```sh
-git pull origin
+git pull
 ```
 
 ## Step 3: Create a new branch for your changes
@@ -19,13 +19,13 @@ git checkout -b MyNewBranch
 
 ## Step 4: Make your changes
 ```sh
-git add --all
-git commit -am "Your commit message"
+git add .
+git commit -m "Your commit message"
 ```
 
 ## Step 5: Push your branch to the remote server (origin)
 ```sh
-git push origin
+git push
 ```
 Note: The first time you run the above command, it's going to tell you to set --set-upstream, so rerun it as instructed.  You only have to do that once for a new branch.
 
@@ -40,7 +40,7 @@ Squash & merge if you are done with the branch you just created.
 ```sh
 git checkout development
 git branch -d MyNewBranch
-git pull origin
+git pull
 ```
 
 Note: Always create a new branch locally from the latest version of the development branch.  If you don't do this, you'll need to rebase your current branch to be in sync with development before you can merge it.  If you don't do this, you are likely to encounter difficulties.
