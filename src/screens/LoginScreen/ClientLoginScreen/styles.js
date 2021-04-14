@@ -62,5 +62,5 @@ export default StyleSheet.create({
         marginTop: 20,
         marginBottom:40,
         textAlign: 'center',
-      }
+      },
 })
