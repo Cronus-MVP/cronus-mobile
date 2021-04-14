@@ -16,6 +16,11 @@ export default function ClientRegistrationLocation({navigation,route}) {
     const [countryArea, setCountryArea] = useState('');
     const [city, setCity] = useState('');
     const [showAddressFields, setShowAddressFields] = useState(true);
+    const firstName = route.params.data.firstName
+    const lastName = route.params.data.lastName
+    const email = route.params.data.email
+    const phone = route.params.data.phone
+    console.log("EMAIL: ",route.params)
 
     const onFooterLinkPress = () => {
         navigation.navigate('ClientLogin')
@@ -54,11 +59,17 @@ export default function ClientRegistrationLocation({navigation,route}) {
                 const uid = response.user.uid
                 const data = {
                     id: uid,
-                    email,
                     firstName,
                     lastName,
+                    email,
+                    phone,
+                    streetAddress,
+                    streetAddress2,
+                    city,
+                    countryArea,
+                    postalCode,
                 };
-                const usersRef = firebase.firestore().collection('users')
+                const usersRef = firebase.firestore().collection('clients')
                 usersRef
                     .doc(uid)
                     .set(data)
@@ -106,17 +117,12 @@ export default function ClientRegistrationLocation({navigation,route}) {
                     language: 'en',
                     components: 'country:us',
                 }}
-                // styles={{
-                // textInputContainer: {
-                //     ...styles.input
-                // },
-                // predefinedPlacesDescription: {
-                //     color: '#1faadb',
-                // },
-                // container: {
-                //     width: styles.input
-                // }
-                // }}
+                styles={{
+                    textInput: styles.input,
+                    predefinedPlacesDescription: {
+                      color: '#1faadb',
+                    },
+                  }}
                 />
                 {showAddressFields ? (
                 <>

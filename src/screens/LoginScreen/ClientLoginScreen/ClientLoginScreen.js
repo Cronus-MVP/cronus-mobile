@@ -20,7 +20,7 @@ export default function ClientLoginScreen({navigation}) {
             .signInWithEmailAndPassword(email, password)
             .then((response) => {
                 const uid = response.user.uid
-                const usersRef = firebase.firestore().collection('users')
+                const usersRef = firebase.firestore().collection('clients')
                 usersRef
                     .doc(uid)
                     .get()
