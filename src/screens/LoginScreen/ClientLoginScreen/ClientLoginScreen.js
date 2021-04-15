@@ -5,6 +5,7 @@ import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import {MainStackNavigator} from '../../../navigation/MainStackNavigator'
 
+
 export default function ClientLoginScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

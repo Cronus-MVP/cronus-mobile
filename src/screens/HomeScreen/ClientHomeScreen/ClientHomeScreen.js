@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import {StatusBar} from 'expo-status-bar'
 import { FlatList, Keyboard, Text, TouchableOpacity, View} from 'react-native'
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 // import {MainStackNavigator} from '../../navigation/MainStackNavigator'
+import MapView from 'react-native-maps';
 
 export default function ClientHomeScreen(props) {
 
@@ -69,7 +71,12 @@ export default function ClientHomeScreen(props) {
                     style={styles.button}
                     onPress={() => onLogoutPress()}>
                     <Text style={styles.buttonTitle}>Log out</Text>
-                </TouchableOpacity>
+            </TouchableOpacity>
+            <MapView
+                style = {StyleSheet.absoluteFillObject}
+                provide= {MapView.PROVIDER_GOOGLE}
+            ></MapView>
+            <StatusBar style = 'auto'/>
             {/* { entities && (
                 <View style={styles.listContainer}>
                     <FlatList
