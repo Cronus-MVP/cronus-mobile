@@ -5,72 +5,106 @@ import styles from './styles';
 import { firebase } from '../../../firebase/config';
 
 export default function VendorRegistrationScreen({navigation}) {
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    const [name, setName] = useState('')
+    const [businessName, setBusinessName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [phone, setPhone] = useState('')
+    // const [password, setPassword] = useState('')
+    // const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('VendorLogin')
+        navigation.navigate('Login')
     }
 
-    const onRegisterPress = () => {
-        if (password !== confirmPassword) {
-            alert("Passwords don't match.")
-            return
+    const checkTextInput = () => {
+        if (!name.trim()) {
+            alert('Please enter your Name');
+            return false;
+        }else if (!businessName.trim()) {
+            alert('Please enter Business Name');
+            return false;
+        }else if (!email.trim()) {
+            alert('Please enter Email');
+            return false;
+        }else if (!phone.trim()) {
+            alert('Please enter Phone Number');
+            return false;
         }
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then((response) => {
-                const uid = response.user.uid
-                const data = {
-                    id: uid,
-                    email,
-                    firstName,
-                };
-                const usersRef = firebase.firestore().collection('users')
-                usersRef
-                    .doc(uid)
-                    .set(data)
-                    .then(() => {
-                        navigation.navigate('VendorHome', {user: data})
-                    })
-                    .catch((error) => {
-                        alert(error)
-                    });
-            })
-            .catch((error) => {
-                alert(error)
-        });
+        return true;
     }
 
-    return (
-        <View style={styles.container}>
+
+    const onNextPress = () => {
+        // if (password !== confirmPassword) {
+        //     alert("Passwords don't match.")
+        //     return
+        // }
+        const data = {
+            email,
+            name,
+            businessName,
+            phone
+        };
+        if(checkTextInput()==true){
+            console.log("HERE")
+            navigation.navigate('VendorRegistrationLocation', {data})
+        }
+        return;  
+    }
+
+    // const onRegisterPress = () => {
+    //     if (password !== confirmPassword) {
+    //         alert("Passwords don't match.")
+    //         return
+    //     }
+    //     firebase
+    //         .auth()
+    //         .createUserWithEmailAndPassword(email, password)
+    //         .then((response) => {
+    //             const uid = response.user.uid
+    //             const data = {
+    //                 id: uid,
+    //                 email,
+    //                 name,
+    //                 businessName,
+    //             };
+    //             const usersRef = firebase.firestore().collection('users')
+    //             usersRef
+    //                 .doc(uid)
+    //                 .set(data)
+    //                 .then(() => {
+    //                     navigation.navigate('VendorHome', {user: data})
+    //                 })
+    //                 .catch((error) => {
+    //                     alert(error)
+    //                 });
+    //         })
+    //         .catch((error) => {
+    //             alert(error)
+    //     });
+    // }
+
+    const registerForm = () => {
+        return (<View style={styles.card}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                <Image
-                    style={styles.logo}
-                    source={require('../../../../assets/cronus-logo.png')}
-                />
-                <Text style={styles.text}>Get your business started with Cronus!</Text>
+                <Text style={styles.text}>Grow your business with Cronus!</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder='First Name'
+                    placeholder='Name'
                     placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setFirstName(text)}
-                    value={firstName}
+                    onChangeText={(text) => setName(text)}
+                    value={name}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
                 <TextInput
                     style={styles.input}
-                    placeholder='Last Name'
+                    placeholder='Business Name'
                     placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setLastName(text)}
-                    value={lastName}
+                    onChangeText={(text) => setBusinessName(text)}
+                    value={businessName}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
@@ -83,7 +117,7 @@ export default function VendorRegistrationScreen({navigation}) {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
-                <TextInput
+                {/* <TextInput
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"
                     secureTextEntry
@@ -102,16 +136,40 @@ export default function VendorRegistrationScreen({navigation}) {
                     value={confirmPassword}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                /> */}
+                <TextInput
+                    style={styles.input}
+                    placeholder='Phone'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setPhone(text)}
+                    value={phone}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                    keyboardType={'phone-pad'}
                 />
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => onRegisterPress()}>
-                    <Text style={styles.buttonTitle}>Create account</Text>
+                    onPress={() => onNextPress()}>
+                    <Text style={styles.buttonTitle}>Next</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
                     <Text style={styles.footerText}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
+        </View>
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+             <Image
+                    style={styles.logo}
+                    source={require('../../../../assets/cronus-logo2.png')}
+                />
+            <View style={styles.title}>
+               {registerForm()}
+            </View>
+            
         </View>
     )
 }
