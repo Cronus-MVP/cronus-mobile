@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
@@ -58,5 +58,9 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginTop: 60
-      }
+    },
+    map: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      },
 })
