@@ -63,20 +63,26 @@ export default function ClientHomeScreen(props) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Client Home</Text>
+            {/* <Text style={styles.text}>Client Home</Text>
             <View style={styles.formContainer}>
                 <Text h1>Hi!</Text>
-            </View>
-            <TouchableOpacity
+            </View> */}
+            {/* <TouchableOpacity
                     style={styles.button}
                     onPress={() => onLogoutPress()}>
                     <Text style={styles.buttonTitle}>Log out</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <MapView
-                // style = {StyleSheet.absoluteFillObject}
-                provide= {MapView.PROVIDER_GOOGLE}
-            ></MapView>
-            <StatusBar style = 'auto'/>
+                style = {styles.map}
+                // provide= {MapView.PROVIDER_GOOGLE}
+                // showsUserLocation
+                // initialRegion={{
+                // latitude: 37.78825,
+                // longitude: -122.4324,
+                // latitudeDelta: 0.0922,
+                // longitudeDelta: 0.0421}}
+            />
+            {/* <StatusBar style = 'auto'/> */}
             {/* { entities && (
                 <View style={styles.listContainer}>
                     <FlatList
