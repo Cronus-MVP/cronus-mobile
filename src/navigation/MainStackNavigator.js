@@ -8,9 +8,7 @@ import VendorHomeScreen from '../screens/HomeScreen/VendorHomeScreen/VendorHomeS
 import SettingScreen from '../screens/SettingScreen/SettingScreen'
 import MyAppointmentScreen from '../screens/MyAppointmentScreen/MyAppointmentScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
-import LandingScreen from '../screens/LandingScreen/LandingScreen'
-import ClientLoginScreen from '../screens/LoginScreen/ClientLoginScreen/ClientLoginScreen'
-import VendorLoginScreen from '../screens/LoginScreen/VendorloginScreen/VendorLoginScreen'
+import LoginScreen from '../screens/LoginScreen/LoginScreen'
 import ClientRegistrationScreen from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationScreen'
 import VendorRegistrationScreen from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationScreen'
 import ClientRegistrationLocation from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationLocation'
@@ -50,8 +48,8 @@ function ClientHomeStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="ClientLogin"
-        component={ClientLoginScreen}
+        name="Login"
+        component={LoginScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -88,8 +86,8 @@ function VendorHomeStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="VendorLogin"
-        component={VendorLoginScreen}
+        name="Login"
+        component={LoginScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -182,26 +180,26 @@ function ClientRegistrationStack(){
         options={{ headerShown:false, tabBarVisible:false }}
       />
       <Stack.Screen
-        name="ClientLogin"
-        component={ClientLoginScreen}
+        name="Login"
+        component={LoginScreen}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       </Stack.Navigator>
       );
 }
 
-function ClientLoginStack(){
+function LoginStack(){
   return (
     <Stack.Navigator
-      initialRouteName="ClientLoginScreen"
+      initialRouteName="Login"
       screenOptions={{
         headerStyle: { backgroundColor: '#ffba3b' },
         headerTintColor: '#fff',
         headerTitleStyle: { fontWeight: 'bold' },
       }}>
       <Stack.Screen
-        name="ClientLoginScreen"
-        component={ClientLoginScreen}
+        name="Login"
+        component={LoginScreen}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       <Stack.Screen
@@ -257,7 +255,7 @@ export function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Landing'
+        initialRouteName='Login'
         screenOptions={{
           gestureEnabled: true,
           headerStyle: {
@@ -272,11 +270,11 @@ export function RootNavigator() {
         }}
         headerMode='float'>
         <Stack.Screen
-          name='Landing'
-          component={LandingScreen}
+          name='Login'
+          component={LoginStack}
           options={{ headerShown:false }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name='ClientLogin'
           component={ClientLoginStack}
           options={{ headerShown:false }}
@@ -285,7 +283,7 @@ export function RootNavigator() {
           name='VendorLogin'
           component={VendorLoginScreen}
           options={{ headerShown:false }}
-        />
+        /> */}
         <Stack.Screen
           name='ClientRegistration'
           component={ClientRegistrationStack}
