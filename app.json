@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "react-native-firebase",
+    "name": "Cronus",
     "slug": "react-native-firebase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/cronus-logo.png",
     "splash": {
-      "image": "./assets/cronus-logo1.png",
+      "image": "./assets/cronus-logo2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
