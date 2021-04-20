@@ -55,7 +55,7 @@ export default function ClientHomeScreen(props) {
     const onLogoutPress = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign out successful!");
-            props.navigation.navigate('ClientLogin');
+            props.navigation.navigate('Login');
           }).catch((error) => {
             console.log("Error: ", error);
           });
@@ -73,7 +73,7 @@ export default function ClientHomeScreen(props) {
                     <Text style={styles.buttonTitle}>Log out</Text>
             </TouchableOpacity>
             <MapView
-                style = {StyleSheet.absoluteFillObject}
+                // style = {StyleSheet.absoluteFillObject}
                 provide= {MapView.PROVIDER_GOOGLE}
             ></MapView>
             <StatusBar style = 'auto'/>

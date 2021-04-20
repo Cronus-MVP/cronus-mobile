@@ -5946,6 +5946,13 @@ react-native-dotenv@^2.5.5:
   dependencies:
     dotenv "^8.0.0"
 
+react-native-gesture-flip-card@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-flip-card/-/react-native-gesture-flip-card-1.0.5.tgz#3faf563786a6619b3516678c7d24dab64926f727"
+  integrity sha512-tV0dFL9DnXIZFNJyeF7mvFVv5m7Epq8tmFIyjpqgUrcGWpShIX7ClH9FfqI6HGuD8Xm4GmT+0EqyGBSRHX7Ipg==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-gesture-handler@~1.8.0:
   version "1.8.0"
   resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz"
