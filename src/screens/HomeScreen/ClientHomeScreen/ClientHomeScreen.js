@@ -64,69 +64,15 @@ export default function ClientHomeScreen(props) {
 
     return (
         <View style={styles.container}>
-            {/* <Text style={styles.text}>Client Home</Text>
+            <Text style={styles.text}>Client Home</Text>
             <View style={styles.formContainer}>
                 <Text h1>Hi!</Text>
-            </View> */}
-            {/* <TouchableOpacity
+            </View>
+             <TouchableOpacity
                     style={styles.button}
                     onPress={() => onLogoutPress()}>
                     <Text style={styles.buttonTitle}>Log out</Text>
-            </TouchableOpacity> */}
-            <MapView
-                style = {styles.map}
-                // provide= {MapView.PROVIDER_GOOGLE}
-                // showsUserLocation
-                // initialRegion={{
-                // latitude: 37.78825,
-                // longitude: -122.4324,
-                // latitudeDelta: 0.0922,
-                // longitudeDelta: 0.0421}}
-            />
-            <View style={{ position: 'absolute', top: 10, width: '100%', paddingTop: 20 }}>
-            {/* <TextInput
-                style={styles.TextInput}
-                placeholder={'Search'}
-                placeholderTextColor={'#aaaaaa'}
-            /> */}
-            <GooglePlacesAutocomplete
-                placeholder='Search'
-                style={styles.input}
-                onPress={(data, details = null) => {
-                    const address_dict = formatAddressString(details.adr_address)
-                    console.log("Address", address_dict)
-                    // setStreetAddress(address_dict.streetAdress || '')
-                    // setCountryArea(address_dict.region || '')
-                    // setPostalCode(address_dict.postalCode || '')
-                    // setCity(details.vicinity || '')
-                    // setShowAddressFields(true)
-                }}
-                listViewDisplayed={null}
-                fetchDetails={true}
-                query={{
-                    key: 'AIzaSyCn0kzbqXQnY6HV34Z4d2fbjuwRHtcOrnI',
-                    language: 'en',
-                    components: 'country:us',
-                }}
-                styles={{
-                    textInput: styles.TextInput,
-                    predefinedPlacesDescription: {
-                      color: '#1faadb',
-                    },
-                  }}
-                />
-            </View>
-            {/* <StatusBar style = 'auto'/> */}
-            {/* { entities && (
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={entities}
-                        renderItem={renderEntity}
-                        keyExtractor={(item) => item.id}
-                        removeClippedSubviews={true}
-                    />
-                </View>
-            )} */}
+            </TouchableOpacity>
         </View>
         
     )
