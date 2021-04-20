@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {StatusBar} from 'expo-status-bar'
-import { FlatList, Keyboard, Text, TouchableOpacity, View} from 'react-native'
+import { FlatList, Keyboard, Text, TouchableOpacity, View, TextInput} from 'react-native'
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 // import {MainStackNavigator} from '../../navigation/MainStackNavigator'
 import MapView from 'react-native-maps';
 
@@ -82,6 +83,39 @@ export default function ClientHomeScreen(props) {
                 // latitudeDelta: 0.0922,
                 // longitudeDelta: 0.0421}}
             />
+            <View style={{ position: 'absolute', top: 10, width: '100%', paddingTop: 20 }}>
+            {/* <TextInput
+                style={styles.TextInput}
+                placeholder={'Search'}
+                placeholderTextColor={'#aaaaaa'}
+            /> */}
+            <GooglePlacesAutocomplete
+                placeholder='Search'
+                style={styles.TextInput}
+                onPress={(data, details = null) => {
+                    const address_dict = formatAddressString(details.adr_address)
+                    console.log("Address", address_dict)
+                    // setStreetAddress(address_dict.streetAdress || '')
+                    // setCountryArea(address_dict.region || '')
+                    // setPostalCode(address_dict.postalCode || '')
+                    // setCity(details.vicinity || '')
+                    // setShowAddressFields(true)
+                }}
+                listViewDisplayed={null}
+                fetchDetails={true}
+                query={{
+                    key: 'AIzaSyCn0kzbqXQnY6HV34Z4d2fbjuwRHtcOrnI',
+                    language: 'en',
+                    components: 'country:us',
+                }}
+                styles={{
+                    textInput: styles.TextInput,
+                    predefinedPlacesDescription: {
+                      color: '#1faadb',
+                    },
+                  }}
+                />
+            </View>
             {/* <StatusBar style = 'auto'/> */}
             {/* { entities && (
                 <View style={styles.listContainer}>
