@@ -9,6 +9,7 @@ import SettingScreen from '../screens/SettingScreen/SettingScreen'
 import MyAppointmentScreen from '../screens/MyAppointmentScreen/MyAppointmentScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
 import LoginScreen from '../screens/LoginScreen/LoginScreen'
+import ExploreScreen from '../screens/ExploreScreen/ExploreScreen'
 import ClientRegistrationScreen from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationScreen'
 import VendorRegistrationScreen from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationScreen'
 import VendorRegistrationLocation from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationLocation'
@@ -44,8 +45,8 @@ function ClientHomeStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="Settings"
-        component={SettingScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{ headerShown:false }}
       />
       <Stack.Screen
@@ -95,10 +96,10 @@ function VendorHomeStack(){
   );
 }
 
-function SettingsStack(){
+function ExploreStack(){
   return (
     <Stack.Navigator
-      initialRouteName="Settings"
+      initialRouteName="Explore"
       screenOptions={{
         headerStyle: { backgroundColor: '#ffba3b' },
         headerTintColor: '#fff',
@@ -120,8 +121,8 @@ function SettingsStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="Settings"
-        component={SettingScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -153,8 +154,8 @@ function ProfileStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="Settings"
-        component={SettingScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -277,8 +278,8 @@ function MyAppointmentsStack(){
         options={{ headerShown:false }}
       />
       <Stack.Screen
-        name="Settings"
-        component={SettingScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{ headerShown:false }}
       />
     </Stack.Navigator>
@@ -396,13 +397,13 @@ export function ClientTabNavigator (){
           }}
         />
         <Tab.Screen
-          name="SettingsStack"
-          component={SettingsStack}
+          name="ExploreStack"
+          component={ExploreStack}
           options={{
-            tabBarLabel: 'Settings',
+            tabBarLabel: 'Explore',
             tabBarIcon: ({ color, size }) => (
               <Icon
-                name="ios-settings"
+                name="navigate"
                 color={color}
                 size={size}
               />
@@ -459,10 +460,10 @@ export function VendorTabNavigator (){
           }}
         /> */}
         <Tab.Screen
-          name="SettingsStack"
-          component={SettingsStack}
+          name="ExploreStack"
+          component={ExploreStack}
           options={{
-            tabBarLabel: 'Settings',
+            tabBarLabel: 'Explore',
             tabBarIcon: ({ color, size }) => (
               <Icon
                 name="ios-settings"
