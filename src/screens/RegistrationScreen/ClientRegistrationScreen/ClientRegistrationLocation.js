@@ -23,7 +23,7 @@ export default function ClientRegistrationLocation({navigation,route}) {
     console.log("EMAIL: ",route.params)
 
     const onFooterLinkPress = () => {
-        navigation.navigate('ClientLogin')
+        navigation.navigate('Login')
     }
 
     const onChangeCountryArea = (text) => {
@@ -88,15 +88,12 @@ export default function ClientRegistrationLocation({navigation,route}) {
     console.log("DATA: ",route.params.data)
     console.log(countryArea)
 
-    return (
-        <View style={styles.container}>
+    const registerForm = () => {
+        return (
+            <View style={styles.card}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                <Image
-                    style={styles.logo}
-                    source={require('../../../../assets/cronus-logo.png')}
-                />
                 <Text style={styles.text}>Almost there!</Text>
                 <GooglePlacesAutocomplete
                 placeholder='Search'
@@ -200,6 +197,20 @@ export default function ClientRegistrationLocation({navigation,route}) {
                 </TouchableOpacity>
                 
             </KeyboardAwareScrollView>
+        </View>
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+             <Image
+                    style={styles.logo}
+                    source={require('../../../../assets/cronus-logo2.png')}
+                />
+            <View style={styles.title}>
+               {registerForm()}
+            </View>
+            
         </View>
     )
 }

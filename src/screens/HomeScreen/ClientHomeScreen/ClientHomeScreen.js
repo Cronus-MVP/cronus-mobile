@@ -55,7 +55,7 @@ export default function ClientHomeScreen(props) {
     const onLogoutPress = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign out successful!");
-            props.navigation.navigate('ClientLogin');
+            props.navigation.navigate('Login');
           }).catch((error) => {
             console.log("Error: ", error);
           });

@@ -11,7 +11,7 @@ export default function ClientRegistrationScreen({navigation}) {
 
     const onFooterLinkPress = () => {
         console.log("Here")
-        navigation.navigate('ClientLoginScreen')
+        navigation.navigate('Login')
     }
 
     const onNextPress = () => {
@@ -52,15 +52,12 @@ export default function ClientRegistrationScreen({navigation}) {
         return true;
     }
 
-    return (
-        <View style={styles.container}>
+    const registerForm = () => {
+        return (
+            <View style={styles.card}>
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                <Image
-                    style={styles.logo}
-                    source={require('../../../../assets/cronus-logo.png')}
-                />
                 <Text style={styles.text}>Get started with Cronus!</Text>
                 <TextInput
                     style={styles.input}
@@ -99,34 +96,30 @@ export default function ClientRegistrationScreen({navigation}) {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                     keyboardType={'phone-pad'}
-                />
-                        
+                />    
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => onNextPress()}>
                     <Text style={styles.buttonTitle}>Next</Text>
                 </TouchableOpacity>
-
-                {/* <View style={{ flexDirection:"row" }}>
-                <View style={styles.buttonStyle}>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => navigation.navigate('ClientLogin')}>
-                    <Text style={styles.buttonNext}>Back</Text>
-                </TouchableOpacity>  
-                    </View>
-                    <View style={styles.buttonStyle}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('ClientRegistrationLocation')}>
-                        <Text style={styles.buttonNext}>Next</Text>
-                </TouchableOpacity>
-                    </View>
-                </View> */}
                 <View style={styles.footerView}>
                     <Text style={styles.footerText}>Already got an account? <Text onPress={onFooterLinkPress} style={styles.footerLink}>Log in</Text></Text>
                 </View>
             </KeyboardAwareScrollView>
+        </View>
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+             <Image
+                    style={styles.logo}
+                    source={require('../../../../assets/cronus-logo2.png')}
+                />
+            <View style={styles.title}>
+               {registerForm()}
+            </View>
+            
         </View>
     )
 }

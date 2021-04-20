@@ -72,7 +72,7 @@ export default function VendorHomeScreen(props) {
     const onLogoutPress = () => {
         firebase.auth().signOut().then(() => {
             console.log("Sign out successful!");
-            props.navigation.navigate('VendorLogin');
+            props.navigation.navigate('Login');
           }).catch((error) => {
             console.log("Error: ", error);
           });
