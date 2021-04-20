@@ -11,6 +11,7 @@ import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
 import LoginScreen from '../screens/LoginScreen/LoginScreen'
 import ClientRegistrationScreen from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationScreen'
 import VendorRegistrationScreen from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationScreen'
+import VendorRegistrationLocation from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationLocation'
 import ClientRegistrationLocation from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationLocation'
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -181,7 +182,35 @@ function ClientRegistrationStack(){
       />
       <Stack.Screen
         name="Login"
-        component={LoginScreen}
+        component={LoginStack}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      </Stack.Navigator>
+      );
+}
+
+function VendorRegistrationStack(){
+  return (
+    <Stack.Navigator
+      initialRouteName="VendorRegistrationScreen"
+      screenOptions={{
+        headerStyle: { backgroundColor: '#ffba3b' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}>
+      <Stack.Screen
+        name="VendorRegistrationScreen"
+        component={VendorRegistrationScreen}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      <Stack.Screen
+        name="VendorRegistrationLocation"
+        component={VendorRegistrationLocation}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginStack}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       </Stack.Navigator>
@@ -204,7 +233,12 @@ function LoginStack(){
       />
       <Stack.Screen
         name="ClientRegistrationScreen"
-        component={ClientRegistrationScreen}
+        component={ClientRegistrationStack}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      <Stack.Screen
+        name="VendorRegistrationScreen"
+        component={VendorRegistrationStack}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       <Stack.Screen
@@ -296,7 +330,7 @@ export function RootNavigator() {
         />
         <Stack.Screen
           name='VendorRegistration'
-          component={VendorRegistrationScreen}
+          component={VendorRegistrationStack}
           options={{ headerShown:false }}
         />
         <Stack.Screen

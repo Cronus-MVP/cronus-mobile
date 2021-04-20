@@ -29,10 +29,7 @@ export default function ClientRegistrationScreen({navigation}) {
             console.log("HERE")
             navigation.navigate('ClientRegistrationLocation', {data})
         }
-        return;
-        
-
-        
+        return;  
     }
 
     const checkTextInput = () => {

@@ -12,7 +12,7 @@ export default function LoginScreen({navigation}) {
 
     const onVendorFooterLinkPress = () => {
         console.log(navigation.navigate, "NAVIGATION!!")
-        navigation.navigate('VendorRegistration')
+        navigation.navigate('VendorRegistrationScreen')
     }
 
     const onVendorLoginPress = () => {
@@ -81,7 +81,7 @@ export default function LoginScreen({navigation}) {
                 <KeyboardAwareScrollView
                     style={{ flex: 1, width: '100%' }}
                     keyboardShouldPersistTaps="always">
-                    <Text style={styles.text}>Welcome Back!</Text>
+                    <Text style={styles.text}>Cronus for Personal Use!</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='E-mail'
@@ -120,7 +120,7 @@ export default function LoginScreen({navigation}) {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                 <Text style={styles.text}>Ready to grow your Business?</Text>
+                 <Text style={styles.text}>Cronus for Business!</Text>
                 <TextInput
                     style={styles.input}
                     placeholder='E-mail'
