@@ -73,7 +73,7 @@ export default function ClientHomeScreen(props) {
                     <Text style={styles.buttonTitle}>Log out</Text>
             </TouchableOpacity>
             <MapView
-                style = {StyleSheet.absoluteFillObject}
+                // style = {StyleSheet.absoluteFillObject}
                 provide= {MapView.PROVIDER_GOOGLE}
             ></MapView>
             <StatusBar style = 'auto'/>
