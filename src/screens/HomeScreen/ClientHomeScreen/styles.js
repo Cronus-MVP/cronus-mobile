@@ -63,4 +63,16 @@ export default StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
       },
+    TextInput: {
+        borderRadius: 10,
+        margin: 10,
+        color: '#000',
+        borderColor: 'white',
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        height: 55,
+        width: 20,
+        paddingHorizontal: 10,
+        fontSize: 18,
+    }
 })
