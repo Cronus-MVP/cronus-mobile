@@ -91,7 +91,7 @@ export default function ClientHomeScreen(props) {
             /> */}
             <GooglePlacesAutocomplete
                 placeholder='Search'
-                style={styles.TextInput}
+                style={styles.input}
                 onPress={(data, details = null) => {
                     const address_dict = formatAddressString(details.adr_address)
                     console.log("Address", address_dict)
