@@ -3,9 +3,10 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: "column",
         alignItems: 'center',
-        paddingTop: 50,
-        backgroundColor: '#fab907'
+        paddingTop: 30,
+        // backgroundColor: '#fab907'
     },
     title: {
         paddingBottom: 80,
@@ -86,5 +87,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+        paddingTop: 20
+      },
+      background: {
+        flex: 1,
+        width: '100%',
+        height: '130%',
+        justifyContent: "center",
+        alignItems: "center",
+        opacity: 1
       }
 })
