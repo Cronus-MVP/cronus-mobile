@@ -5,8 +5,6 @@ export default StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         alignItems: 'center',
-        paddingTop: 30,
-        // backgroundColor: '#fab907'
     },
     title: {
         paddingBottom: 80,
