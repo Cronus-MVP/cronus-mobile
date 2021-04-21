@@ -87,7 +87,6 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        paddingTop: 20
       },
       background: {
         flex: 1,

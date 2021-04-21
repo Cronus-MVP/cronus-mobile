@@ -4,12 +4,11 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingTop: 50,
-        backgroundColor: '#fab907'
+        paddingTop: 20,
     },
     title: {
-        paddingBottom: 50,
-        paddingTop: 50,
+        paddingBottom: 8,
+        paddingTop: 120,
     },
     logo: {
         flex: 1,
@@ -93,6 +92,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+      },
+      background: {
+        flex: 1,
+        width: '100%',
+        height: '130%',
+        justifyContent: "center",
+        alignItems: "center",
+        opacity: 1
       }
 
 })
