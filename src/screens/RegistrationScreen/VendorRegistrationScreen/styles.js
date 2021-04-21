@@ -4,7 +4,6 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingTop: 20,
     },
     title: {
         paddingBottom: 8,
