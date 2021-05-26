@@ -4,6 +4,7 @@ import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 import {RootNavigator} from './src/navigation/MainStackNavigator'
+import { LogBox } from 'react-native';
 
 export default function App() {
 
@@ -11,7 +12,7 @@ export default function App() {
   const [user, setUser] = useState(null)
 
 
-
+  LogBox.ignoreLogs(['Setting a timer']);
 
   // if (loading) {	
   //   return (	
