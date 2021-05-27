@@ -74,5 +74,6 @@ export default StyleSheet.create({
         width: 20,
         paddingHorizontal: 10,
         fontSize: 18,
-    }
+    },
+    
 })

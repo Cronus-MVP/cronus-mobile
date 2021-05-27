@@ -1,9 +1,11 @@
+import { CenterFocusStrong } from '@material-ui/icons';
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#f0b11f'
     },
     formContainer: {
         flexDirection: 'row',
@@ -74,5 +76,21 @@ export default StyleSheet.create({
         width: 20,
         paddingHorizontal: 10,
         fontSize: 18,
+    },
+    scrollView: {
+        backgroundColor: '#f0b11f',
+        marginHorizontal: 10,
+        alignContent: 'center',
+        width: 350
+      },
+    Card: {
+        width: 300,
+        height: 400,
+        backgroundColor: '#f5f3eb',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        marginBottom: 10,
+        marginTop: 10,
     }
 })

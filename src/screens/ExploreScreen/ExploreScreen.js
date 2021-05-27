@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {StatusBar} from 'expo-status-bar'
-import { FlatList, Keyboard, Text, TouchableOpacity, View, TextInput} from 'react-native'
+import { ScrollView, Animated, View, Dimensions} from 'react-native'
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
-import {formatAddressString} from '../../../utils/helper'
+import {formatAddressString, getRegionForCoordinates} from '../../../utils/helper'
+import * as Location from 'expo-location';
 
 // import {MainStackNavigator} from '../../navigation/MainStackNavigator'
 import MapView from 'react-native-maps';
@@ -13,95 +14,85 @@ export default function ExploreScreen(props) {
 
     const [entityText, setEntityText] = useState('')
     const [entities, setEntities] = useState([])
+    const [location, setLocation] = useState(null);
+    const [long, setLong] = useState(43.1281419);
+    const [lat, setLat] = useState(-122.999999);
+    const [longDelta, setLongDelta] = useState(0.0922);
+    const [latDelta, setLatDelta] = useState(0.0421);
 
-    const entityRef = firebase.firestore().collection('entities')
-    // console.log("Props: ", props);
-    // const userID = route.params.data.id;
-    // const userName = route.params.data.firstName;
+    const [region, setRegion] = useState({
+        longitude: 43.129796,
+        latitude: -77.6369222,
+        longitudeDelta: 0.0034,
+        latitudeDelta: 0.0922
+    })
 
-    console.log("Props: ",props)
 
-    // useEffect(() => {
-    //     userID?(
-    //         entityRef
-    //         .where("authorID", "==", userID)
-    //         .orderBy('createdAt', 'desc')
-    //         .onSnapshot(
-    //             querySnapshot => {
-    //                 const newEntities = []
-    //                 querySnapshot.forEach(doc => {
-    //                     const entity = doc.data()
-    //                     entity.id = doc.id
-    //                     newEntities.push(entity)
-    //                 });
-    //                 setEntities(newEntities)
-    //             },
-    //             error => {
-    //                 console.log(error)
-    //             },
-    //         console.log("USER ID: ", userID),
-    //         )
-    //     ): console.log("Error!!")
-    // }, [])
 
+    useEffect(() => {
+        if(location){
+            // const window = Dimensions.get('window');
+            // const { width, height }  = window
+            // const latD = 0.0122
+            // const longD = latD + (width / height)
+            // setLong(location.lng)
+            // setLat(location.lat)
+            // setLongDelta(longD)
+            // setLatDelta(latD)
+            console.log("Lat D: ", latD, "Long D: ", longD)
+            // setRegion({
+            //     longitude: location.lng,
+            //     latitude: location.lat,
+            //     longitudeDelta: longD,
+            //     latitudeDelte: latD
+            // })
+        }
+      }, []);
     
-    // const renderEntity = ({item, index}) => {
-    //     return (
-    //         <View style={styles.entityContainer}>
-    //             <Text style={styles.entityText}>
-    //                 {index}. {item.text}
-    //             </Text>
-    //         </View>
-    //     )
+    // const onSearchPress = (details) => {
+    //     setLocation(details.geometry.location)
     // }
-
-    const onLogoutPress = () => {
-        firebase.auth().signOut().then(() => {
-            console.log("Sign out successful!");
-            props.navigation.navigate('Login');
-          }).catch((error) => {
-            console.log("Error: ", error);
-          });
-    }
 
     return (
         <View style={styles.container}>
-            {/* <Text style={styles.text}>Client Home</Text>
-            <View style={styles.formContainer}>
-                <Text h1>Hi!</Text>
-            </View> */}
-            {/* <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => onLogoutPress()}>
-                    <Text style={styles.buttonTitle}>Log out</Text>
-            </TouchableOpacity> */}
             <MapView
                 style = {styles.map}
-                // provide= {MapView.PROVIDER_GOOGLE}
-                // showsUserLocation
-                // initialRegion={{
-                // latitude: 37.78825,
-                // longitude: -122.4324,
-                // latitudeDelta: 0.0922,
-                // longitudeDelta: 0.0421}}
-            />
-            <View style={{ position: 'absolute', top: 10, width: '100%', paddingTop: 20 }}>
-            {/* <TextInput
-                style={styles.TextInput}
-                placeholder={'Search'}
-                placeholderTextColor={'#aaaaaa'}
+                region={region}
+                // showsUserLocation = {true}
+                // followsUserLocation = {true}
+                // showsMyLocationButton = {true}
+                // showsCompass = {true}
+                // onRegionChangeComplete={region => setRegion(region)}
+            >
+
+         {/* <MapView.Marker
+            coordinate={{latitude: region.latitude,
+            longitude: region.longitude}}
+            title={"title"}
+            description={"description"}
             /> */}
+            </MapView>
+
+            <View style={{ position: 'absolute', top: 10, width: '100%', paddingTop: 20 }}>
             <GooglePlacesAutocomplete
                 placeholder='Search'
                 style={styles.input}
-                onPress={(data, details = null) => {
+                onPress={(data, details, geometry = null) => {
                     const address_dict = formatAddressString(details.adr_address)
-                    console.log("Address", address_dict)
-                    // setStreetAddress(address_dict.streetAdress || '')
-                    // setCountryArea(address_dict.region || '')
-                    // setPostalCode(address_dict.postalCode || '')
-                    // setCity(details.vicinity || '')
-                    // setShowAddressFields(true)
+                    console.log("Geo", details.geometry.location)
+                    const window = Dimensions.get('window');
+                    const { width, height }  = window
+                    const latD = 0.0922
+                    const longD = latD + (width / height)
+                    // setRegion({
+                    //     longitude: details.geometry.location.lng,
+                    //     latitude: details.geometry.location.lat,
+                    //     longitudeDelta: longD,
+                    //     latitudeDelte: latD
+                    // })
+                    console.log("REGION: ", region)
+
+                    // onSearchPress(details)
                 }}
                 listViewDisplayed={null}
                 fetchDetails={true}
@@ -118,17 +109,6 @@ export default function ExploreScreen(props) {
                   }}
                 />
             </View>
-            {/* <StatusBar style = 'auto'/> */}
-            {/* { entities && (
-                <View style={styles.listContainer}>
-                    <FlatList
-                        data={entities}
-                        renderItem={renderEntity}
-                        keyExtractor={(item) => item.id}
-                        removeClippedSubviews={true}
-                    />
-                </View>
-            )} */}
         </View>
         
     )
