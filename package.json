@@ -31,6 +31,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.3",
     "react-native-maps": "0.27.1",
     "react-native-material-design": "^0.3.7",
+    "react-native-paper": "^4.8.1",
     "react-native-phone-number-input": "^2.0.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",

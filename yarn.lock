@@ -1087,6 +1087,14 @@
     "lodash" "^4.17.19"
     "to-fast-properties" "^2.0.0"
 
+"@callstack/react-theme-provider@^3.0.5":
+  "integrity" "sha512-wwKMXfmklfogpalNZT0W+jh76BIquiYUiQHOaPmt/PCyCEP/E6rP+e7Uie6mBZrfkea9WJYJ+mus6r+45JAEhg=="
+  "resolved" "https://registry.npmjs.org/@callstack/react-theme-provider/-/react-theme-provider-3.0.6.tgz"
+  "version" "3.0.6"
+  dependencies:
+    "deepmerge" "^3.2.0"
+    "hoist-non-react-statics" "^3.3.0"
+
 "@callstack/react-theme-provider@3.0.3":
   "integrity" "sha512-B+9JBK7zsND/AdVkjwHvbb4cR05fJofLFG30hOeoXke8WkKAWN36yFljauAhI8qwlXlGFGZMYE1wQvsqBSccrA=="
   "resolved" "https://registry.npmjs.org/@callstack/react-theme-provider/-/react-theme-provider-3.0.3.tgz"
@@ -1872,14 +1880,14 @@
     "regenerator-runtime" "^0.13.3"
 
 "@material-ui/core@^4.0.0":
-  "integrity" "sha512-Adt40rGW6Uds+cAyk3pVgcErpzU/qxc7KBR94jFHBYretU4AtWZltYcNsbeMn9tXL86jjVL1kuGcIHsgLgFGRw=="
-  "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.11.3.tgz"
-  "version" "4.11.3"
+  "integrity" "sha512-oqb+lJ2Dl9HXI9orc6/aN8ZIAMkeThufA5iZELf2LQeBn2NtjVilF5D2w7e9RpntAzDb4jK5DsVhkfOvFY/8fg=="
+  "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.11.4.tgz"
+  "version" "4.11.4"
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@material-ui/styles" "^4.11.3"
+    "@material-ui/styles" "^4.11.4"
     "@material-ui/system" "^4.11.3"
-    "@material-ui/types" "^5.1.0"
+    "@material-ui/types" "5.1.0"
     "@material-ui/utils" "^4.11.2"
     "@types/react-transition-group" "^4.2.0"
     "clsx" "^1.0.4"
@@ -1896,14 +1904,14 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
-"@material-ui/styles@^4.11.3":
-  "integrity" "sha512-HzVzCG+PpgUGMUYEJ2rTEmQYeonGh41BYfILNFb/1ueqma+p1meSdu4RX6NjxYBMhf7k+jgfHFTTz+L1SXL/Zg=="
-  "resolved" "https://registry.npmjs.org/@material-ui/styles/-/styles-4.11.3.tgz"
-  "version" "4.11.3"
+"@material-ui/styles@^4.11.4":
+  "integrity" "sha512-KNTIZcnj/zprG5LW0Sao7zw+yG3O35pviHzejMdcSGCdWbiO8qzRgOYL8JAxAsWBKOKYwVZxXtHWaB5T2Kvxew=="
+  "resolved" "https://registry.npmjs.org/@material-ui/styles/-/styles-4.11.4.tgz"
+  "version" "4.11.4"
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@emotion/hash" "^0.8.0"
-    "@material-ui/types" "^5.1.0"
+    "@material-ui/types" "5.1.0"
     "@material-ui/utils" "^4.11.2"
     "clsx" "^1.0.4"
     "csstype" "^2.5.2"
@@ -1928,7 +1936,7 @@
     "csstype" "^2.5.2"
     "prop-types" "^15.7.2"
 
-"@material-ui/types@^5.1.0":
+"@material-ui/types@5.1.0":
   "integrity" "sha512-7cqRjrY50b8QzRSYyhSpx4WRw2YuO0KKIGQEVk5J8uoz2BanawykgZGoWEqKm7pVIbzFDN0SpPcVV4IhOFkl8A=="
   "resolved" "https://registry.npmjs.org/@material-ui/types/-/types-5.1.0.tgz"
   "version" "5.1.0"
@@ -2283,7 +2291,14 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@unimodules/core@*", "@unimodules/core@~6.0.0":
+"@unimodules/core@*":
+  "integrity" "sha512-oLRT4Bkah3GEopkxmTgpHsRTRp+NJ1907ZjE9y/HLh32q7O/3mcbpY77Uvm+EXW0Vh14gOlU+bmkpC0hz3we0w=="
+  "resolved" "https://registry.npmjs.org/@unimodules/core/-/core-7.1.0.tgz"
+  "version" "7.1.0"
+  dependencies:
+    "compare-versions" "^3.4.0"
+
+"@unimodules/core@~6.0.0":
   "integrity" "sha512-+KCVh+NjU33lkHOFiRfJZR6dDsSF8zCY1CVARMYJbQ7w1epRsalpKnCK08JoNYHQqkPR79d2zQSWMxd20zBvoA=="
   "resolved" "https://registry.npmjs.org/@unimodules/core/-/core-6.0.0.tgz"
   "version" "6.0.0"
@@ -3383,9 +3398,9 @@
   "version" "1.0.4"
 
 "dom-helpers@^5.0.1":
-  "integrity" "sha512-Ru5o9+V8CpunKnz5LGgWXkmrH/20cGKwcHwS4m73zIvs54CN9epEmT/HLqFJW3kXpakAFkEdzgy1hzlJe3E4OQ=="
-  "resolved" "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.0.tgz"
-  "version" "5.2.0"
+  "integrity" "sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA=="
+  "resolved" "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz"
+  "version" "5.2.1"
   dependencies:
     "@babel/runtime" "^7.8.7"
     "csstype" "^3.0.2"
@@ -6381,15 +6396,35 @@
     "prop-types" "^15.6.2"
     "scheduler" "^0.19.1"
 
-"react-is@^16.12.0", "react-is@^16.13.0", "react-is@^16.7.0", "react-is@^16.8.0 || ^17.0.0", "react-is@^16.8.1", "react-is@^16.8.4":
+"react-is@^16.12.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react-is@^17.0.1":
+"react-is@^16.13.0":
+  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
+  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
+  "version" "16.13.1"
+
+"react-is@^16.7.0":
+  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
+  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
+  "version" "16.13.1"
+
+"react-is@^16.8.0 || ^17.0.0", "react-is@^17.0.1":
   "integrity" "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
+
+"react-is@^16.8.1":
+  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
+  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
+  "version" "16.13.1"
+
+"react-is@^16.8.4":
+  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
+  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
+  "version" "16.13.1"
 
 "react-native-card-list@^0.1.0":
   "integrity" "sha1-TrzYGy8ls57ctvUISUw3Ttx1wgM="
@@ -6464,7 +6499,7 @@
     "prop-types" "^15.7.2"
     "qs" "~6.9.1"
 
-"react-native-iphone-x-helper@^1.0.3", "react-native-iphone-x-helper@^1.3.0":
+"react-native-iphone-x-helper@^1.0.3", "react-native-iphone-x-helper@^1.3.0", "react-native-iphone-x-helper@^1.3.1":
   "integrity" "sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg=="
   "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
   "version" "1.3.1"
@@ -6483,7 +6518,8 @@
   "version" "0.27.1"
 
 "react-native-material-design-styles@git+https://github.com/react-native-material-design/react-native-material-design-styles.git":
-  "resolved" "git+ssh://git@github.com/react-native-material-design/react-native-material-design-styles.git#bdc029c1a1c83ff563d10868be38b8aed1e9989b"
+  "integrity" "sha512-gNrJkBMFuaHmO9TAlDZ3H7c3/yZGYakOCOdsDiNScgm+ynKvHtxFBKAEiTnd8QdYkfBh4uWOmUj53zCYaybUTA=="
+  "resolved" "git+ssh://git@github.com/react-native-material-design/react-native-material-design-styles.git"
   "version" "0.2.6"
 
 "react-native-material-design@^0.3.7":
@@ -6493,6 +6529,15 @@
   dependencies:
     "react-native-material-design-styles" "git+https://github.com/react-native-material-design/react-native-material-design-styles.git"
     "react-native-vector-icons" "^2.0.1"
+
+"react-native-paper@^4.8.1":
+  "integrity" "sha512-WgmqrDdcrr0ZbuiLCwMpmOMhl1n8uIvNulxsl2oCGtD8oeMkPJKHf4G/ONR+iNrSXcFbJek+uDRSmcGA5kDfUA=="
+  "resolved" "https://registry.npmjs.org/react-native-paper/-/react-native-paper-4.8.1.tgz"
+  "version" "4.8.1"
+  dependencies:
+    "@callstack/react-theme-provider" "^3.0.5"
+    "color" "^3.1.2"
+    "react-native-iphone-x-helper" "^1.3.1"
 
 "react-native-phone-number-input@^2.0.1":
   "integrity" "sha512-z0rF0HPzwXcYt3IKoM+qHilalBPIzn/pEWWikXEERygyfEF1bnMAgmTq6rlaf8jURzo0hX+KEYyF5v7PAPyEJg=="
@@ -6532,15 +6577,7 @@
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz"
   "version" "0.3.1"
 
-"react-native-vector-icons@^2.0.1":
-  "integrity" "sha1-N/9A4vx1OlZiSEbnRxKCuBi5Ltw="
-  "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-2.1.0.tgz"
-  "version" "2.1.0"
-  dependencies:
-    "lodash" "^4.0.0"
-    "yargs" "^4.7.0"
-
-"react-native-vector-icons@^8.1.0", "react-native-vector-icons@>7.0.0":
+"react-native-vector-icons@*", "react-native-vector-icons@^8.1.0", "react-native-vector-icons@>7.0.0":
   "integrity" "sha512-sHIdBB6Y0dHaot2fMXgy5J/hhCn5YuyN7SKDNFgPzL8KA1oF2/v7mgYMavnK7LIIs2dJoGnDANKf61dsU+TZlg=="
   "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-8.1.0.tgz"
   "version" "8.1.0"
@@ -6553,6 +6590,14 @@
     "lodash.template" "^4.5.0"
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
+
+"react-native-vector-icons@^2.0.1":
+  "integrity" "sha1-N/9A4vx1OlZiSEbnRxKCuBi5Ltw="
+  "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "lodash" "^4.0.0"
+    "yargs" "^4.7.0"
 
 "react-native-web@*", "react-native-web@~0.13.12", "react-native-web@~0.13.7", "react-native-web@0.9.x":
   "integrity" "sha512-WR/0ECAmwLQ2+2cL2Ur+0/swXFAtcSM0URoADJmG6D4MnY+wGc91JO8LoOTlgY0USBOY+qG/beRrjFa+RAuOiA=="
@@ -7571,7 +7616,12 @@
   "resolved" "https://registry.npmjs.org/unimodules-image-loader-interface/-/unimodules-image-loader-interface-5.4.0.tgz"
   "version" "5.4.0"
 
-"unimodules-permissions-interface@*", "unimodules-permissions-interface@~5.4.0":
+"unimodules-permissions-interface@*":
+  "integrity" "sha512-jeJx/y+Vn/Cp1/4su5XJ06UBul83MpXkYEqIOAb2jwaikhmj6tNwko7HpKy9OhfGfrhddCzwtedlro8xxZUk9A=="
+  "resolved" "https://registry.npmjs.org/unimodules-permissions-interface/-/unimodules-permissions-interface-6.1.0.tgz"
+  "version" "6.1.0"
+
+"unimodules-permissions-interface@~5.4.0":
   "integrity" "sha512-mb+uiWvf2M/og7bA28CYOH6uKsAg/7oRBodZNsXVRH/h5LjQlBd5lTECH/L3Hkm3Ta7NSQUnENtXUCO4jfnVkg=="
   "resolved" "https://registry.npmjs.org/unimodules-permissions-interface/-/unimodules-permissions-interface-5.4.0.tgz"
   "version" "5.4.0"
@@ -7581,7 +7631,12 @@
   "resolved" "https://registry.npmjs.org/unimodules-sensors-interface/-/unimodules-sensors-interface-5.4.0.tgz"
   "version" "5.4.0"
 
-"unimodules-task-manager-interface@*", "unimodules-task-manager-interface@~5.4.0":
+"unimodules-task-manager-interface@*":
+  "integrity" "sha512-wSsuX5fzd3oCCjHvrRFxysmCswhHZbJflVyAWzgSHtyMgxBOZobGN1C0UQ/plcu/JWY2+maTDPpE9OU6wzzzdg=="
+  "resolved" "https://registry.npmjs.org/unimodules-task-manager-interface/-/unimodules-task-manager-interface-6.1.0.tgz"
+  "version" "6.1.0"
+
+"unimodules-task-manager-interface@~5.4.0":
   "integrity" "sha512-5QvPqR41fg9tsce+H6ZBzHxSbce+xPUWKoPZiP5pF4Gq4C3r0AdAfQXz+KkzTDrpj7EqNrjG0xkUfPKmizZ55Q=="
   "resolved" "https://registry.npmjs.org/unimodules-task-manager-interface/-/unimodules-task-manager-interface-5.4.0.tgz"
   "version" "5.4.0"

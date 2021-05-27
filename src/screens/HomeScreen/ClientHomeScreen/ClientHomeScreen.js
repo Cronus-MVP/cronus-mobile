@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {Text, TouchableOpacity, View} from 'react-native'
-import { Card} from 'react-native-elements'
+import {Text, TouchableOpacity, View, ScrollView, SafeAreaView} from 'react-native'
+import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
@@ -67,12 +67,12 @@ export default function ClientHomeScreen(props) {
     useEffect(() => {
       vendorData?(
         getVendorData().then(vendor=>{
-          console.log("Vendor Data in Use Effect: ",vendor),
-          showVendors()
+          console.log("Vendor Data in Use Effect: ")
+          // showVendors()
         }
           
         )
-      ): showVendors()
+      ): console.log("Vendor Data available!")
 
     //     userID?(
     //         entityRef
@@ -108,21 +108,16 @@ export default function ClientHomeScreen(props) {
     // }
 
     async function getVendorData() {
+        console.log("FETCH!!!")
         const vendors = firebase.firestore().collection('vendors')
         var tempDoc = []
-        const result = []
         vendors.get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                tempDoc.push({ id: doc.id, ...doc.data() })
             })
             setVendorData(tempDoc)
-            result = tempDoc
             console.log("Inside query Snapshot: ",tempDoc)
          })
-         console.log("Final: ", result)
-         return result;
-        
-
     }
 
     // const onLogoutPress = () => {
@@ -134,61 +129,68 @@ export default function ClientHomeScreen(props) {
     //       });
     // }
 
-    const CardList = ({ robots }) => {
-      const cardsArray = robots.map(robot => (
-        console.log("Name: ", robot.businessName),
-        console.log("Address: ", robot.streetAddress),
-        console.log("ID: ", robot.id),
-        <CardView
-        cardElevation={2}
-          cardMaxElevation={2}
-          cornerRadius={5}>
-            <Text>
-             {robot.businessName}
-          </Text>
-          </CardView>
-      ));
-      return (
-        <View>
-          {cardsArray}
-        </View>
-      );
-    }
+    // const CardList = ({ robots }) => {
+    //   const cardsArray = robots.map(robot => (
+    //     console.log("Name: ", robot.businessName),
+    //     console.log("Address: ", robot.streetAddress),
+    //     console.log("ID: ", robot.id),
+    //     <CardView
+    //     cardElevation={2}
+    //       cardMaxElevation={2}
+    //       cornerRadius={5}>
+    //         <Text>
+    //          {robot.businessName}
+    //       </Text>
+    //       </CardView>
+    //   ));
+    //   return (
+    //     <View>
+    //       {cardsArray}
+    //     </View>
+    //   );
+    // }
     
-    const showVendors = () => {
-      console.log("In Show Vendors - Vendor Data: ", vendorData)
-    return (
-        <View style={styles.container}>
-            {vendorData.map(vendor => (
-              <CardView
-              cardElevation={2}
-                cardMaxElevation={2}
-                cornerRadius={5}>
-                  <Text>
-                   {vendor.businessName}
-                </Text>
-                </CardView>
-                ))
-              }
-        </View>
+  //   const showVendors = () => {
+  //     console.log("In Show Vendors - Vendor Data: ", vendorData)
+  //   return (
+  //       <View style={styles.container}>
+  //           {vendorData.map(vendor => (
+  //             <CardView
+  //             cardElevation={2}
+  //               cardMaxElevation={2}
+  //               cornerRadius={5}>
+  //                 <Text>
+  //                  {vendor.businessName}
+  //               </Text>
+  //               </CardView>
+  //               ))
+  //             }
+  //       </View>
         
-    )
-  }
+  //   )
+  // }
 
   return (
+    <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Text style={styles.text}>Client Home Screen</Text>
+      <Text style={styles.text}>Vendors near you!</Text>
+      <ScrollView style={styles.scrollView}>
       {vendorData.map(vendor => (
-              <CardView
-              cardElevation={2}
-                cardMaxElevation={2}
-                cornerRadius={5}>
-                  <Text>
-                   {vendor.businessName}
-                </Text>
-                </CardView>
+        <Card style= {styles.Card}>
+          <Card.Title title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
+          <Card.Content>
+            <Title>{vendor.streetAddress}</Title>
+            <Paragraph>{vendor.city}</Paragraph>
+          </Card.Content>
+          <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          <Card.Actions>
+            <Button>Book a appointment</Button>
+          </Card.Actions>
+        </Card>
                 ))
               }
+        </ScrollView>
     </View>
+    </SafeAreaView>
   )
 }
