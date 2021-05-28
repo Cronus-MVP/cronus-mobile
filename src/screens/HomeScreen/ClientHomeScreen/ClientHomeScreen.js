@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, ScrollView, SafeAreaView} from 'react-native'
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Button, Card, Title, Paragraph, ActivityIndicator, Colors } from 'react-native-paper';
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
@@ -11,6 +11,7 @@ export default function ClientHomeScreen(props) {
     const [entityText, setEntityText] = useState('')
     const [entities, setEntities] = useState([])
     const [vendorData, setVendorData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     // const vendors = firebase.firestore().collection('vendors')
     // const tempDoc = []
@@ -118,16 +119,10 @@ export default function ClientHomeScreen(props) {
             setVendorData(tempDoc)
             console.log("Inside query Snapshot: ",tempDoc)
          })
+         setLoading(false)
     }
 
-    // const onLogoutPress = () => {
-    //     firebase.auth().signOut().then(() => {
-    //         console.log("Sign out successful!");
-    //         props.navigation.navigate('Login');
-    //       }).catch((error) => {
-    //         console.log("Error: ", error);
-    //       });
-    // }
+ 
 
     // const CardList = ({ robots }) => {
     //   const cardsArray = robots.map(robot => (
@@ -171,12 +166,19 @@ export default function ClientHomeScreen(props) {
   // }
 
   return (
-    <SafeAreaView style={styles.container}>
+    loading?(
+      console.log("Loading: ", loading),
+      <View style={styles.loading}>
+        <ActivityIndicator animating={true} style={styles.activityIndicatorWrapper} />
+      </View>
+      
+    ):(
+      <SafeAreaView style={styles.container}>
     <View style={styles.container}>
       <Text style={styles.text}>Vendors near you!</Text>
       <ScrollView style={styles.scrollView}>
       {vendorData.map(vendor => (
-        <Card style= {styles.Card}>
+        <Card style= {styles.Card} key={vendor.id}>
           <Card.Title title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
           <Card.Content>
             <Title>{vendor.streetAddress}</Title>
@@ -184,7 +186,7 @@ export default function ClientHomeScreen(props) {
           </Card.Content>
           <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
           <Card.Actions>
-            <Button>Book a appointment</Button>
+            <Button>Book an appointment</Button>
           </Card.Actions>
         </Card>
                 ))
@@ -192,5 +194,7 @@ export default function ClientHomeScreen(props) {
         </ScrollView>
     </View>
     </SafeAreaView>
+    )
+    
   )
 }
