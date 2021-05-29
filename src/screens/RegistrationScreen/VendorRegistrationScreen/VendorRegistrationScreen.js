@@ -3,18 +3,91 @@ import { Image, Text, TextInput, TouchableOpacity, View, ImageBackground } from 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 import { firebase } from '../../../firebase/config';
+import * as ImagePicker from 'expo-image-picker';
+import storage from '@react-native-firebase/storage';
+import * as Progress from 'react-native-progress';
+
 
 export default function VendorRegistrationScreen({navigation}) {
     const [name, setName] = useState('')
     const [businessName, setBusinessName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
+    const [image, setImage] = useState(null);
+    const [uploading, setUploading] = useState(false);
+    const [transferred, setTransferred] = useState(0);
+    const [selectedImage, setSelectedImage] = useState(null);
     // const [password, setPassword] = useState('')
     // const [confirmPassword, setConfirmPassword] = useState('')
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
     }
+
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        
+        if (permissionResult.granted === false) {
+            alert("Permission to access camera roll is required!");
+            return;
+        }
+        
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        console.log(pickerResult);
+        if (pickerResult.cancelled === true) {
+            return;
+        }
+          
+        setSelectedImage({ localUri: pickerResult.uri });
+        }
+
+        // if (selectedImage !== null) {
+        //     return (
+        //       <View style={styles.container}>
+        //         <Image
+        //           source={{ uri: selectedImage.localUri }}
+        //           style={styles.thumbnail}
+        //         />
+        //       </View>
+        //     );
+        //   }
+
+    //   const uploadImage = async (uri) => {
+    //     // const { uri } = selectedImage.localUri;
+    //     console.log("URI of image: ", uri)
+    //     const filename = uri.substring(uri.lastIndexOf('/') + 1);
+    //     const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+    //     setUploading(true);
+    //     setTransferred(0);
+    //     const task = storage()
+    //       .ref(filename)
+    //       .putFile(uploadUri);
+    //     // set progress state
+    //     task.on('state_changed', snapshot => {
+    //       setTransferred(
+    //         Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
+    //       );
+    //     });
+    //     try {
+    //       await task;
+    //     } catch (e) {
+    //       console.error(e);
+    //     }
+    //     setUploading(false);
+    //     Alert.alert(
+    //       'Photo uploaded!',
+    //       'Your photo has been uploaded to Firebase Cloud Storage!'
+    //     );
+    //     setImage(null);
+    //   };
+
+    const uploadImage = async(uri) => {
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        var ref = firebase.storage().ref().child("images/name.jpg");
+        console.log("Reference: ", ref)
+        return ref.put(blob);
+      }
 
     const checkTextInput = () => {
         if (!name.trim()) {
@@ -147,6 +220,29 @@ export default function VendorRegistrationScreen({navigation}) {
                     autoCapitalize="none"
                     keyboardType={'phone-pad'}
                 />
+
+                    <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+                        <Text style={styles.buttonText}>Pick a photo</Text>
+                    </TouchableOpacity>
+                <View style={styles.imageContainer}>
+                    {selectedImage !== null ? (
+                    <Image source={{ uri: selectedImage.localUri }} style={styles.imageBox} />
+                    ) : null}
+                    {uploading ? (
+                    <View style={styles.progressBarContainer}>
+                        <Progress.Bar progress={transferred} width={300} />
+                    </View>
+                    ) : (
+                    selectedImage !== null ?(
+                    <TouchableOpacity style={styles.uploadButton} onPress={()=>uploadImage(selectedImage.localUri)}>
+                        <Text style={styles.buttonText}>Upload image</Text>
+                    </TouchableOpacity>
+                    ): null
+                    )}
+                </View>
+
+
+
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => onNextPress()}>

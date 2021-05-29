@@ -1,11 +1,9 @@
-import { CenterFocusStrong } from '@material-ui/icons';
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f0b11f'
     },
     formContainer: {
         flexDirection: 'row',
@@ -92,5 +90,24 @@ export default StyleSheet.create({
         borderRadius: 20,
         marginBottom: 10,
         marginTop: 10,
+    },
+    activityIndicatorWrapper: {
+        backgroundColor: '#FFFFFF',
+        color: '#f0b11f',
+        height: 100,
+        width: 100,
+        borderRadius: 10,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+      },
+    loading: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
-})
+}) 

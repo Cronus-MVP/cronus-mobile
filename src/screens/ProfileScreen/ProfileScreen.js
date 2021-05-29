@@ -1,8 +1,21 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, } from 'react-native';
 import styles from './styles';
+import { firebase } from '../../firebase/config'
+
+
 
 function ProfileScreen(props) {
+
+     const onLogoutPress = () => {
+        firebase.auth().signOut().then(() => {
+            console.log("Sign out successful!");
+            props.navigation.navigate('Login');
+          }).catch((error) => {
+            console.log("Error: ", error);
+          });
+    }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -17,6 +30,9 @@ function ProfileScreen(props) {
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonContainer}>
             <Text>Appointment History</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer} onPress={() => onLogoutPress()}>
+            <Text>Logout</Text>
           </TouchableOpacity>
         </View>
       </View>
