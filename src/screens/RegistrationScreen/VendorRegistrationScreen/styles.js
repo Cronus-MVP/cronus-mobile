@@ -133,6 +133,11 @@ export default StyleSheet.create({
       imageBox: {
         width: 300,
         height: 300
+      },
+      thumbnail: {
+        width: 300,
+        height: 300,
+        resizeMode: "contain"
       }
 
 })

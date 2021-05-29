@@ -1,11 +1,9 @@
-import { CenterFocusStrong } from '@material-ui/icons';
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f0b11f'
     },
     formContainer: {
         flexDirection: 'row',
