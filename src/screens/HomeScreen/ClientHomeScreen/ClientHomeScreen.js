@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Text, TouchableOpacity, View, ScrollView, SafeAreaView} from 'react-native'
+import {Text, TouchableOpacity, View, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
 import { Avatar, Button, Card, Title, Paragraph, ActivityIndicator, Colors } from 'react-native-paper';
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
@@ -111,13 +111,11 @@ export default function ClientHomeScreen(props) {
     async function getVendorData() {
         const vendors = firebase.firestore().collection('vendors')
         var tempDoc = []
-        const result = []
         vendors.get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                tempDoc.push({ id: doc.id, ...doc.data() })
             })
             setVendorData(tempDoc)
-            result = tempDoc
             console.log("Inside query Snapshot: ",tempDoc)
          })
          setLoading(false)
@@ -177,6 +175,7 @@ export default function ClientHomeScreen(props) {
       <SafeAreaView style={styles.container}>
     <View style={styles.container}>
       <Text style={styles.text}>Client Home Screen</Text>
+      <ScrollView>
       {vendorData.map(vendor => (
         <Card style= {styles.Card} key={vendor.id}>
           <Card.Title title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
@@ -191,7 +190,9 @@ export default function ClientHomeScreen(props) {
         </Card>
                 ))
               }
+    </ScrollView>
     </View>
+    
     </SafeAreaView>
     )
     

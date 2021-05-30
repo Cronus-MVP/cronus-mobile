@@ -4,6 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#ffba3b'
     },
     formContainer: {
         flexDirection: 'row',

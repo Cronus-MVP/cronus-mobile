@@ -12,6 +12,7 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen'
 import ExploreScreen from '../screens/ExploreScreen/ExploreScreen'
 import ClientRegistrationScreen from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationScreen'
 import VendorRegistrationScreen from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationScreen'
+import VendorRegistrationImage from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationImage'
 import VendorRegistrationLocation from '../screens/RegistrationScreen/VendorRegistrationScreen/VendorRegistrationLocation'
 import ClientRegistrationLocation from '../screens/RegistrationScreen/ClientRegistrationScreen/ClientRegistrationLocation'
 
@@ -207,6 +208,11 @@ function VendorRegistrationStack(){
       <Stack.Screen
         name="VendorRegistrationLocation"
         component={VendorRegistrationLocation}
+        options={{ headerShown:false, tabBarVisible:false }}
+      />
+      <Stack.Screen
+        name="VendorRegistrationImage"
+        component={VendorRegistrationImage}
         options={{ headerShown:false, tabBarVisible:false }}
       />
       <Stack.Screen

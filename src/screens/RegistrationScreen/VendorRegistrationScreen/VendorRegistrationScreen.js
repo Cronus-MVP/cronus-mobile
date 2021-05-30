@@ -13,10 +13,7 @@ export default function VendorRegistrationScreen({navigation}) {
     const [businessName, setBusinessName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [image, setImage] = useState(null);
-    const [uploading, setUploading] = useState(false);
-    const [transferred, setTransferred] = useState(0);
-    const [selectedImage, setSelectedImage] = useState(null);
+
     // const [password, setPassword] = useState('')
     // const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -221,7 +218,7 @@ export default function VendorRegistrationScreen({navigation}) {
                     keyboardType={'phone-pad'}
                 />
 
-                    <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+                    {/* <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
                         <Text style={styles.buttonText}>Pick a photo</Text>
                     </TouchableOpacity>
                 <View style={styles.imageContainer}>
@@ -239,7 +236,7 @@ export default function VendorRegistrationScreen({navigation}) {
                     </TouchableOpacity>
                     ): null
                     )}
-                </View>
+                </View> */}
 
 
 
