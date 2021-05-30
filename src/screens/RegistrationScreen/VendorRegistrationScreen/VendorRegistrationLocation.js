@@ -74,7 +74,7 @@ export default function ClientRegistrationLocation({navigation,route}) {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('VendorHome', {user: data})
+                        navigation.navigate('VendorRegistrationImage', {user: data})
                     })
                     .catch((error) => {
                         alert(error)
@@ -188,7 +188,7 @@ export default function ClientRegistrationLocation({navigation,route}) {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => onRegisterPress()}>
-                    <Text style={styles.buttonTitle}>Create account</Text>
+                    <Text style={styles.buttonTitle}>Next</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.buttonNext}
