@@ -185,7 +185,7 @@ export default function ClientHomeScreen(props) {
       <Text style={styles.titleText}>Vendors Near You</Text>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       {vendorData.map(vendor => (
-        <Card style={{width: 380, marginTop: 40, marginBottom: 10}} key={vendor.id}>
+        <Card style={{width: 380, marginTop: 10, marginBottom: 10}} key={vendor.id}>
           <CardTitle title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
           <CardContent>
             <Title>{vendor.streetAddress}</Title>
