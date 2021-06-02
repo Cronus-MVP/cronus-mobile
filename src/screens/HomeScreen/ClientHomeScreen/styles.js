@@ -65,7 +65,8 @@ export default StyleSheet.create({
         color: 'black',
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 60
+        marginTop: 60,
+        marginBottom: 30
     },
     map: {
         width: Dimensions.get('window').width,
