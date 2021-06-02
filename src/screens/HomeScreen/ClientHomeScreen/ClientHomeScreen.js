@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
-import { Avatar, Button, Card, Title, Paragraph, ActivityIndicator, Colors } from 'react-native-paper';
+import { Avatar, Button, Title, Paragraph, ActivityIndicator, Colors } from 'react-native-paper';
+import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
+import { material } from 'react-native-typography'
 
 
 export default function ClientHomeScreen(props) {
@@ -178,31 +180,42 @@ export default function ClientHomeScreen(props) {
       </View>
       
     ):(
-      <SafeAreaView style={styles.container}>
+      // <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Text style={styles.titleText}>Vendors Closeby</Text>
-      <ScrollView>
+      <Text style={styles.titleText}>Vendors Near You</Text>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       {vendorData.map(vendor => (
-        <Card style= {styles.Card} key={vendor.id}>
-          <Card.Title title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
-          <Card.Content>
+        <Card style={{width: 380, marginTop: 40, marginBottom: 10}} key={vendor.id}>
+          <CardTitle title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
+          <CardContent>
             <Title>{vendor.streetAddress}</Title>
             <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
-          </Card.Content>
+          </CardContent>
           {vendor.imageUrl?(
-            <Card.Cover source={{ uri: vendor.imageUrl }} />
-          ): <Card.Cover source={require('../../../../assets/no-vendor-icon.png')} />}
+            <CardImage source={{ uri: vendor.imageUrl }} />
+          ): <CardImage source={require('../../../../assets/no-vendor-icon.png')} />}
           
-          <Card.Actions>
-            <Button>Book an appointment</Button>
-          </Card.Actions>
+          <CardAction seperator={true} inColumn={false}>
+            {/* <Button>Book an appointment</Button>
+          </Card.Actions> */}
+          <CardButton
+            onPress={() => {}}
+            title="Book an appointment 🗓️"
+            color="blue"
+          />
+          {/* <CardButton
+            onPress={() => {}}
+            title="Later"
+            color="blue"
+          /> */}
+          </CardAction>
         </Card>
                 ))
               }
     </ScrollView>
     </View>
     
-    </SafeAreaView>
+    // </SafeAreaView>
     )
     
   )
