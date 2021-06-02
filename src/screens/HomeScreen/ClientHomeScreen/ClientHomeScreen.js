@@ -12,6 +12,8 @@ export default function ClientHomeScreen(props) {
     const [entities, setEntities] = useState([])
     const [vendorData, setVendorData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [currImage, setCurrImage] = useState(null);
+    
 
     // const vendors = firebase.firestore().collection('vendors')
     // const tempDoc = []
@@ -58,68 +60,71 @@ export default function ClientHomeScreen(props) {
         }
       ]
 
-    // const entityRef = firebase.firestore().collection('entities')
-    // console.log("Props: ", props);
-    // const userID = route.params.data.id;
-    // const userName = route.params.data.firstName;
-
-    // console.log("Props: ",props)
 
     useEffect(() => {
       vendorData?(
         getVendorData().then(vendor=>{
           console.log("Vendor Data in Use Effect: ",vendor),
           showVendors()
-        }
-          
+        } 
         )
       ): showVendors()
-
-    //     userID?(
-    //         entityRef
-    //         .where("authorID", "==", userID)
-    //         .orderBy('createdAt', 'desc')
-    //         .onSnapshot(
-    //             querySnapshot => {
-    //                 const newEntities = []
-    //                 querySnapshot.forEach(doc => {
-    //                     const entity = doc.data()
-    //                     entity.id = doc.id
-    //                     newEntities.push(entity)
-    //                 });
-    //                 setEntities(newEntities)
-    //             },
-    //             error => {
-    //                 console.log(error)
-    //             },
-    //         console.log("USER ID: ", userID),
-    //         )
-    //     ): console.log("Error!!")
     }, [])
 
     
-    // const renderEntity = ({item, index}) => {
-    //     return (
-    //         <View style={styles.entityContainer}>
-    //             <Text style={styles.entityText}>
-    //                 {index}. {item.text}
-    //             </Text>
-    //         </View>
-    //     )
-    // }
-
     async function getVendorData() {
-        const vendors = firebase.firestore().collection('vendors')
-        var tempDoc = []
-        vendors.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-               tempDoc.push({ id: doc.id, ...doc.data() })
-            })
-            setVendorData(tempDoc)
-            console.log("Inside query Snapshot: ",tempDoc)
-         })
-         setLoading(false)
-    }
+      const vendors = firebase.firestore().collection('vendors')
+      var tempDoc = []
+      vendors.get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            tempDoc.push({ id: doc.id, ...doc.data() })
+              // getImageURL(doc.id, tempDoc).then(response=>{
+              //   console.log("Response: ", response)
+              //   tempDoc = response;
+              // })
+              
+          //     vendors.doc(doc.id).collection("images")
+          //     .get()
+          //     .then(response=> {
+          //   response.forEach(document=>{
+          //     let index = tempDoc.findIndex(vendor=> vendor.id===doc.id)
+          //     tempDoc[index] = {...tempDoc[index], imageSrc: document.get('imageUrl')}
+          //   })
+          // })
+            
+          })
+          setVendorData(tempDoc)
+          console.log("Inside query Snapshot: ",tempDoc)
+       })
+       setLoading(false)
+  }
+
+
+    // async function getImageURL (id,tempDoc){
+    //   console.log("ID in getImageURL: ", id)
+    //   firebase
+    //   .firestore()
+    //   .collection("vendors")
+    //   .doc(id)
+    //   .collection("images")
+    //   .get()
+    //   .then(response=> {
+    //     // console.log("Image: ", response)
+    //     response.forEach(document=>{
+    //       //console.log("Document in images: ", document.get('imageUrl'))
+    //       // images = (document.get('imageUrl'))
+    //       // console.log("Images after set: ",images)
+    //       // setVendorData(vendorData.map(element => element.id == id?{...element, imageSrc: document.get('imageUrl')}: element))
+    //       // setCurrImage(document.get('imageUrl'));
+    //       let index = tempDoc.findIndex(vendor=> vendor.id===id)
+    //       console.log("ID: ", index, "Document in images: ", tempDoc[index])
+    //       tempDoc[index] = {...tempDoc[index], imageSrc: document.get('imageUrl')}
+    //       // tempDoc=curr
+    //       setVendorData(tempDoc)
+    //     })
+    //   });
+    //   return tempDoc;
+    // }
 
  
 
@@ -128,6 +133,7 @@ export default function ClientHomeScreen(props) {
         console.log("Name: ", robot.businessName),
         console.log("Address: ", robot.streetAddress),
         console.log("ID: ", robot.id),
+        
         <CardView
         cardElevation={2}
           cardMaxElevation={2}
@@ -174,16 +180,19 @@ export default function ClientHomeScreen(props) {
     ):(
       <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Text style={styles.text}>Client Home Screen</Text>
+      <Text style={styles.titleText}>Vendors Closeby</Text>
       <ScrollView>
       {vendorData.map(vendor => (
         <Card style= {styles.Card} key={vendor.id}>
           <Card.Title title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
           <Card.Content>
             <Title>{vendor.streetAddress}</Title>
-            <Paragraph>{vendor.city}</Paragraph>
+            <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
           </Card.Content>
-          <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+          {vendor.imageUrl?(
+            <Card.Cover source={{ uri: vendor.imageUrl }} />
+          ): <Card.Cover source={require('../../../../assets/no-vendor-icon.png')} />}
+          
           <Card.Actions>
             <Button>Book an appointment</Button>
           </Card.Actions>

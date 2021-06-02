@@ -6,6 +6,7 @@ import { firebase } from '../../../firebase/config';
 import * as ImagePicker from 'expo-image-picker';
 import storage from '@react-native-firebase/storage';
 import * as Progress from 'react-native-progress';
+import Toast from 'react-native-toast-message';
 
 
 export default function VendorRegistrationImage({navigation, route}) {
@@ -47,13 +48,40 @@ export default function VendorRegistrationImage({navigation, route}) {
         imageRef
         .getDownloadURL()
         .then((url) => {
-            firebase.firestore().collection('vendors').doc(route.params.user.id).collection('images').add({
+            firebase.firestore().collection('vendors').doc(route.params.user.id).update({
                 imageUrl: url
+            }).then(response => {
+                        Toast.show({
+                            type: 'success',
+                            position: 'top',
+                            text1: 'Account successfully created!',
+                            text2: 'Image saved 👋',
+                            visibilityTime: 1000,
+                            autoHide: true,
+                            topOffset: 30,
+                            bottomOffset: 40,
+                            // onShow: () => {},
+                            onHide: () => {navigation.navigate('VendorHome')},
+                            onPress: () => {}
+                          });
+                    
             })
             //from url you can fetched the uploaded image easily
             //this.setState({profileImageUrl: url});
         })
-        .catch((e) => console.log('getting downloadURL of image error => ', e));
+        .catch((e) => Toast.show({
+            type: 'error',
+            position: 'top',
+            text1: 'Something went wrong!',
+            text2: 'Try again 😟',
+            visibilityTime: 1000,
+            autoHide: true,
+            topOffset: 30,
+            bottomOffset: 40,
+            // onShow: () => {},
+            onHide: () => {navigation.navigate('LoginScreen')},
+            onPress: () => {}
+          }));
     }
 
 
@@ -63,6 +91,7 @@ export default function VendorRegistrationImage({navigation, route}) {
 
 return (
 <View style={styles.container}>
+<Toast ref={(ref) => Toast.setRef(ref)} />
 <Text style={styles.text}>Last Step - Choose your Business picture!</Text>
  <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
  <Text style={styles.buttonText}>Pick a photo</Text>

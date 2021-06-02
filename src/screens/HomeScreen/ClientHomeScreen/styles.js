@@ -60,6 +60,13 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 60
     },
+    titleText: {
+        fontFamily: 'notoserif',
+        color: '#101010',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 60
+    },
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
@@ -83,7 +90,7 @@ export default StyleSheet.create({
         width: 350
       },
     Card: {
-        width: 300,
+        width: 250,
         height: 400,
         backgroundColor: '#f5f3eb',
         justifyContent: 'center',
