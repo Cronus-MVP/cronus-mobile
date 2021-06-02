@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#ffba3b'
+        backgroundColor: '#f7a205'
     },
     formContainer: {
         flexDirection: 'row',
@@ -61,9 +61,9 @@ export default StyleSheet.create({
         marginTop: 60
     },
     titleText: {
-        fontFamily: 'notoserif',
-        color: '#101010',
-        fontSize: 20,
+        fontFamily: 'sans-serif-light',
+        color: 'black',
+        fontSize: 30,
         fontWeight: 'bold',
         marginTop: 60
     },
@@ -90,7 +90,7 @@ export default StyleSheet.create({
         width: 350
       },
     Card: {
-        width: 250,
+        width: 300,
         height: 400,
         backgroundColor: '#f5f3eb',
         justifyContent: 'center',
