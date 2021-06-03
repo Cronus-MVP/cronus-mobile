@@ -58,15 +58,15 @@ export default StyleSheet.create({
         color: '#101010',
         fontSize: 20,
         fontWeight: 'bold',
-        marginTop: 60
+        marginTop: 60,
     },
     titleText: {
         fontFamily: 'sans-serif-light',
         color: 'black',
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
-        marginTop: 60,
-        marginBottom: 30
+        marginTop: 25,
+        marginBottom: 0
     },
     map: {
         width: Dimensions.get('window').width,
@@ -84,15 +84,21 @@ export default StyleSheet.create({
         paddingHorizontal: 10,
         fontSize: 18,
     },
+    CardTitle:{
+        padding:0,
+        margin:0
+    },
     scrollView: {
-        backgroundColor: '#f0b11f',
+        backgroundColor: 'black',
         marginHorizontal: 10,
         alignContent: 'center',
-        width: 350
+        width: 350,
+        marginTop:0,
+        padding:0
       },
     Card: {
-        width: 300,
-        height: 400,
+        width: 370,
+        
         backgroundColor: '#f5f3eb',
         justifyContent: 'center',
         alignItems: 'center',
