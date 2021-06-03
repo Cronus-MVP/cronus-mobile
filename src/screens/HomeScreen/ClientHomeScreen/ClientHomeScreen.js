@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
-import { Avatar, Button, Title, Paragraph, ActivityIndicator, Colors } from 'react-native-paper';
+import { Avatar, Button, Title, Paragraph, ActivityIndicator, Colors, Headline } from 'react-native-paper';
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
+import { NavigationContainer } from '@react-navigation/native';
+ 
+import { createStackNavigator } from '@react-navigation/stack';
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
@@ -182,19 +185,11 @@ export default function ClientHomeScreen(props) {
     ):(
       // <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Text style={styles.titleText}>Vendors Near You</Text>
+      <Headline style={styles.titleText}>Open Vendors</Headline>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       {vendorData.map(vendor => (
-        <Card style={{width: 380, marginTop: 10, marginBottom: 10}} key={vendor.id}>
-          <CardTitle title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
-          <CardContent>
-            <Title>{vendor.streetAddress}</Title>
-            <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
-          </CardContent>
-          {vendor.imageUrl?(
-            <CardImage source={{ uri: vendor.imageUrl }} />
-          ): <CardImage source={require('../../../../assets/no-vendor-icon.png')} />}
-          
+        <Card style={styles.Card} key={vendor.id}>
+          <CardTitle style={styles.CardTitle} title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
           <CardAction seperator={true} inColumn={false}>
             {/* <Button>Book an appointment</Button>
           </Card.Actions> */}
@@ -209,6 +204,15 @@ export default function ClientHomeScreen(props) {
             color="blue"
           /> */}
           </CardAction>
+          {vendor.imageUrl?(
+            <CardImage source={{ uri: vendor.imageUrl }} />
+          ): <CardImage source={require('../../../../assets/no-vendor-icon.png')} />}
+          
+          <CardContent>
+            <Title>{vendor.streetAddress}</Title>
+            <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
+          </CardContent>
+          
         </Card>
                 ))
               }
