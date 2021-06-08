@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f7a205'
+        backgroundColor: '#EF928F'
     },
     formContainer: {
         flexDirection: 'row',
@@ -85,8 +85,11 @@ export default StyleSheet.create({
         fontSize: 18,
     },
     CardTitle:{
-        padding:0,
-        margin:0
+        margin:-8, 
+        color: '#FFFFFF',
+        backgroundColor: '#20B1A7',
+        
+        
     },
     scrollView: {
         backgroundColor: 'black',
@@ -98,13 +101,18 @@ export default StyleSheet.create({
       },
     Card: {
         width: 370,
-        
         backgroundColor: '#f5f3eb',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
         marginBottom: 10,
         marginTop: 10,
+        
+    },
+    CardContent:{
+        margin:0,
+        backgroundColor: '#20B1A7',
+        
     },
     activityIndicatorWrapper: {
         backgroundColor: '#FFFFFF',

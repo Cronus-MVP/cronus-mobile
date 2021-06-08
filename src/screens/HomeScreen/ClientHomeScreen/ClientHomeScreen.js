@@ -189,15 +189,11 @@ export default function ClientHomeScreen(props) {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       {vendorData.map(vendor => (
         <Card style={styles.Card} key={vendor.id}>
-          <CardTitle style={styles.CardTitle} title={vendor.businessName} subtitle={"Contact: "+ vendor.email}/>
+          <CardTitle style={styles.CardTitle} title={vendor.businessName} />
           <CardAction seperator={true} inColumn={false}>
             {/* <Button>Book an appointment</Button>
           </Card.Actions> */}
-          <CardButton
-            onPress={() => {}}
-            title="Book an appointment 🗓️"
-            color="blue"
-          />
+         
           {/* <CardButton
             onPress={() => {}}
             title="Later"
@@ -208,10 +204,10 @@ export default function ClientHomeScreen(props) {
             <CardImage source={{ uri: vendor.imageUrl }} />
           ): <CardImage source={require('../../../../assets/no-vendor-icon.png')} />}
           
-          <CardContent>
+          {/* <CardContent style={styles.CardContent}>
             <Title>{vendor.streetAddress}</Title>
             <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
-          </CardContent>
+          </CardContent> */}
           
         </Card>
                 ))
