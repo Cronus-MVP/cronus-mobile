@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#EF928F'
+        backgroundColor: '#FFFFFF'
     },
     formContainer: {
         flexDirection: 'row',
@@ -86,10 +86,11 @@ export default StyleSheet.create({
     },
     CardTitle:{
         margin:-8, 
+        fontFamily: 'MMA Champ',
         color: '#FFFFFF',
-        backgroundColor: '#20B1A7',
-        
-        
+        backgroundColor: '#f7a40a',
+        justifyContent: 'center',
+        alignItems: 'center' 
     },
     scrollView: {
         backgroundColor: 'black',
@@ -101,7 +102,7 @@ export default StyleSheet.create({
       },
     Card: {
         width: 370,
-        backgroundColor: '#f5f3eb',
+        backgroundColor: '#ffd982',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
@@ -111,7 +112,9 @@ export default StyleSheet.create({
     },
     CardContent:{
         margin:0,
-        backgroundColor: '#20B1A7',
+        backgroundColor: '#ffd982',
+        color: '#FFFFFF',
+        textShadowColor: 'white'
         
     },
     activityIndicatorWrapper: {
@@ -132,5 +135,8 @@ export default StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    appointmentText: {
+        color: '#0220ba',
     }
 }) 

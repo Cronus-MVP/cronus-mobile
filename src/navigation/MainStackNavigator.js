@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ClientHomeScreen from '../screens/HomeScreen/ClientHomeScreen/ClientHomeScreen'
 import VendorHomeScreen from '../screens/HomeScreen/VendorHomeScreen/VendorHomeScreen'
 import SettingScreen from '../screens/SettingScreen/SettingScreen'
+import BookingScreen from '../screens/BookingScreen/BookingScreen'
 import MyAppointmentScreen from '../screens/MyAppointmentScreen/MyAppointmentScreen'
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen'
 import LoginScreen from '../screens/LoginScreen/LoginScreen'
@@ -38,6 +39,11 @@ function ClientHomeStack(){
       <Stack.Screen
         name="MyAppointments"
         component={MyAppointmentScreen}
+        options={{ headerShown:false }}
+      />
+      <Stack.Screen
+        name="BookingScreen"
+        component={BookingScreen}
         options={{ headerShown:false }}
       />
       <Stack.Screen
