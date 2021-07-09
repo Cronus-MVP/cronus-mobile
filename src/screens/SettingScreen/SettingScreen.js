@@ -15,12 +15,14 @@ import * as Icon from "react-native-vector-icons";
 const { width, height } = Dimensions.get("screen");
 
 
-function SettingScreen(props) {
+export default function SettingScreen(props) {
  state={
    sort: "distance",
    type: "all",
 
  }
+
+ 
 
  const onLogoutPress = () => {
   firebase.auth().signOut().then(() => {
@@ -42,5 +44,3 @@ function SettingScreen(props) {
                  
   )
 }
-
-export default SettingScreen;

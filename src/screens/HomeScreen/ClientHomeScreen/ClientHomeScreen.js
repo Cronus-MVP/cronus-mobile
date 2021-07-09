@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, Title, Paragraph, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
-import { Button, ActivityIndicator, Headline } from 'react-native-paper';
+import { Button, ActivityIndicator, Headline, Subheading } from 'react-native-paper';
 import { Card, CardTitle, CardAction, CardImage, CardContent } from 'react-native-material-cards'
  
 import styles from './styles';
@@ -12,8 +12,8 @@ export default function ClientHomeScreen(props) {
     const [vendorData, setVendorData] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const onBookingPress = () => {
-      props.navigation.navigate('BookingScreen')
+    const onBookingPress = (vendor) => { 
+      props.navigation.navigate('BookingScreen', {user: props.route.params.user, vendor: vendor})
     }
 
     useEffect(() => {
@@ -69,13 +69,14 @@ export default function ClientHomeScreen(props) {
     ):(
       // <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <Headline style={styles.titleText}>Open Vendors</Headline>
+      <Headline style={styles.titleText}>{"Welcome "+ props.route.params.user.firstName + "!"}</Headline>
+      <Subheading>{'Vendors in '+ props.route.params.user.city}</Subheading>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       {vendorData.map(vendor => (
         <Card style={styles.Card} key={vendor.id}>
           <CardTitle style={styles.CardTitle} title={vendor.businessName} />
           <CardAction seperator={true} inColumn={false}>
-            <Button onPress={onBookingPress}>
+            <Button onPress={()=> {onBookingPress(vendor)}}>
               <Text style={styles.appointmentText}>
               📆 Book now!
               </Text>
@@ -96,8 +97,6 @@ export default function ClientHomeScreen(props) {
               }
     </ScrollView>
     </View>
-    
-    // </SafeAreaView>
     )
     
   )

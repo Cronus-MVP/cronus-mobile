@@ -347,7 +347,7 @@ export function RootNavigator() {
           options={{ headerShown:false }}
         />
         <Stack.Screen
-          name='ClientHome'
+          name='Home'
           component={ClientTabNavigator}
           options={{ headerShown:false }
         }
@@ -366,7 +366,7 @@ export function RootNavigator() {
 export function ClientTabNavigator (){
   return (
       <Tab.Navigator
-        initialRouteName="ClientHome"
+        initialRouteName="Home"
         tabBarOptions={{
           activeTintColor: '#ffba3b',
         }}>

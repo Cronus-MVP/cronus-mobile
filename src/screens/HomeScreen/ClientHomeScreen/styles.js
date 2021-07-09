@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#f2ede4'
     },
     formContainer: {
         flexDirection: 'row',
@@ -56,17 +56,17 @@ export default StyleSheet.create({
     },
     text: {
         color: '#101010',
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 10,
+        fontWeight: '900',
         marginTop: 60,
     },
     titleText: {
-        fontFamily: 'sans-serif-light',
+        fontFamily: 'sans-serif-thin',
         color: 'black',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
-        marginTop: 25,
-        marginBottom: 0
+        marginTop: 30,
+        marginBottom: 5
     },
     map: {
         width: Dimensions.get('window').width,
@@ -86,7 +86,7 @@ export default StyleSheet.create({
     },
     CardTitle:{
         margin:-8, 
-        fontFamily: 'MMA Champ',
+        fontFamily: 'sans-serif-thin',
         color: '#FFFFFF',
         backgroundColor: '#f7a40a',
         justifyContent: 'center',
@@ -137,6 +137,11 @@ export default StyleSheet.create({
         justifyContent: 'center'
     },
     appointmentText: {
+        fontFamily: 'sans-serif-thin',
         color: '#0220ba',
+        fontSize: 15,
+        fontWeight: '700',
+        marginTop: 30,
+        marginBottom: 5
     }
 }) 

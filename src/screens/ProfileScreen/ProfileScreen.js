@@ -15,6 +15,7 @@ function ProfileScreen(props) {
             console.log("Error: ", error);
           });
     }
+    console.log("PROPS in settings: ", props)
 
   return (
     <View style={styles.container}>
