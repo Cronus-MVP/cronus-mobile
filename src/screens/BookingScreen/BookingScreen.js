@@ -19,7 +19,7 @@ export default function BookingScreen(props) {
         setHours(value.hours);
         setMinutes(value.minutes);
     };
-    console.log("Props: ", props.route.params)
+    console.log("Props: ", props)
 
     const saveDate = (day) => {
         setDate(day)

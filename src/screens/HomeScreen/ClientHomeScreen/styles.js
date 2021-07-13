@@ -88,7 +88,7 @@ export default StyleSheet.create({
         margin:-8, 
         fontFamily: 'sans-serif-thin',
         color: '#FFFFFF',
-        backgroundColor: '#f7a40a',
+        backgroundColor: '#ffd982',
         justifyContent: 'center',
         alignItems: 'center' 
     },

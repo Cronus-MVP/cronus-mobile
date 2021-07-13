@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, Title, Paragraph, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
-import { Button, ActivityIndicator, Headline, Subheading } from 'react-native-paper';
+import { ActivityIndicator, Headline, Subheading } from 'react-native-paper';
 import { Card, CardTitle, CardAction, CardImage, CardContent } from 'react-native-material-cards'
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
  
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
+import BookIcon from '../../../../assets/book-appointment.png'
 
 
 export default function ClientHomeScreen(props) {
     const [vendorData, setVendorData] = useState([])
     const [loading, setLoading] = useState(true)
 
+
     const onBookingPress = (vendor) => { 
+      console.log("THIS Props: ", this.props)
       props.navigation.navigate('BookingScreen', {user: props.route.params.user, vendor: vendor})
     }
 
@@ -75,19 +80,30 @@ export default function ClientHomeScreen(props) {
       {vendorData.map(vendor => (
         <Card style={styles.Card} key={vendor.id}>
           <CardTitle style={styles.CardTitle} title={vendor.businessName} />
-          <CardAction seperator={true} inColumn={false}>
+          {/* <CardAction seperator={true} inColumn={false}>
             <Button onPress={()=> {onBookingPress(vendor)}}>
               <Text style={styles.appointmentText}>
               📆 Book now!
               </Text>
             </Button>
 
-          </CardAction>
+          </CardAction> */}
           {vendor.imageUrl?(
             <CardImage source={{ uri: vendor.imageUrl }} />
           ): <CardImage source={require('../../../../assets/no-vendor-icon.png')} />}
           
           <CardContent style={styles.CardContent} text={vendor.streetAddress + "\n"+ vendor.countryArea + ", "+ vendor.postalCode}/>
+          <Button
+            onPress= {()=>onBookingPress(vendor)}
+            buttonStyle= {{backgroundColor: '#e35f22', marginBottom: 15}}
+            icon={{
+              name: "event",
+              size: 15,
+              color: "white",
+            }}
+            title="Book now!"
+          />
+
             {/* <Title>{vendor.streetAddress}</Title>
             <Paragraph>{vendor.city + ", "+ vendor.countryArea + ", "+ vendor.postalCode}</Paragraph>
           </CardContent> */}

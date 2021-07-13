@@ -5,7 +5,7 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffba3b'
+    backgroundColor: '#ffd982'
   },
   text: {
     fontFamily: 'sans-serif-thin',
