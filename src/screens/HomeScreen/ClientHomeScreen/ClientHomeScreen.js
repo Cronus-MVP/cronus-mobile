@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Text, TouchableOpacity, View, Title, Paragraph, ScrollView, SafeAreaView, KeyboardAwareScrollView} from 'react-native'
-import { ActivityIndicator, Headline, Subheading } from 'react-native-paper';
+import { ActivityIndicator, Headline, Subheading, Appbar } from 'react-native-paper';
 import { Card, CardTitle, CardAction, CardImage, CardContent } from 'react-native-material-cards'
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -8,7 +8,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
 import { firebase } from '../../../firebase/config'
 import CardView from 'react-native-cardview'
-import BookIcon from '../../../../assets/book-appointment.png'
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function ClientHomeScreen(props) {
@@ -16,19 +17,23 @@ export default function ClientHomeScreen(props) {
     const [loading, setLoading] = useState(true)
 
 
-    const onBookingPress = (vendor) => { 
-      console.log("THIS Props: ", this.props)
+    const onBookingPress = async(vendor) => {
+      try {
+        await AsyncStorage.setItem('@user_Id', props.route.params.user.id)
+      } catch (e) {
+        // saving error
+      } 
       props.navigation.navigate('BookingScreen', {user: props.route.params.user, vendor: vendor})
     }
 
     useEffect(() => {
       vendorData?(
         getVendorData().then(vendor=>{
-          console.log("Vendor Data in Use Effect: ",vendor),
-          showVendors()
+          console.log("Vendor Data in Use Effect: ")
+          // showVendors()
         } 
         )
-      ): showVendors()
+      ): null
     }, [])
 
     
@@ -45,35 +50,24 @@ export default function ClientHomeScreen(props) {
        setLoading(false)
   }
     
-    const showVendors = () => {
-      console.log("In Show Vendors - Vendor Data: ", vendorData)
-        return (
-          <View style={styles.container}>
-              {vendorData.map(vendor => (
-                <CardView
-                cardElevation={2}
-                  cardMaxElevation={2}
-                  cornerRadius={5}>
-                    <Text>
-                    {vendor.businessName}
-                  </Text>
-                  </CardView>
-                  ))
-                }
-          </View>
-        )
-      }
 
   return (
     loading?(
       console.log("Loading: ", loading),
       <View style={styles.loading}>
-        <ActivityIndicator animating={true} style={styles.activityIndicatorWrapper} />
+        <ActivityIndicator animating={true} color = '#ffd982'
+               size = "large" style={styles.activityIndicatorWrapper} />
       </View>
       
     ):(
       // <SafeAreaView style={styles.container}>
     <View style={styles.container}>
+      {/* <Appbar style={styles.bottom}>
+        <Appbar.Action
+          icon="format-list-bulleted"
+          onPress={() => console.log('Pressed archive')}
+        />
+        </Appbar> */}
       <Headline style={styles.titleText}>{"Welcome "+ props.route.params.user.firstName + "!"}</Headline>
       <Subheading>{'Vendors in '+ props.route.params.user.city}</Subheading>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
