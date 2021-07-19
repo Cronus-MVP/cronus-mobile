@@ -4,7 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#f2ede4'
+        backgroundColor: 'white'
     },
     formContainer: {
         flexDirection: 'row',
@@ -100,7 +100,16 @@ export default StyleSheet.create({
         marginTop:0,
         padding:0
       },
-    Card: {
+      Card: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 7,
+        },
+        shadowOpacity: 0.41,
+        shadowRadius: 9.11,
+
+        elevation: 14,
         width: 370,
         backgroundColor: '#ffd982',
         justifyContent: 'center',

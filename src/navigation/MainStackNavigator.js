@@ -408,7 +408,7 @@ export function ClientTabNavigator (){
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="ExploreStack"
           component={ExploreStack}
           options={{
@@ -421,7 +421,7 @@ export function ClientTabNavigator (){
               />
             ),
           }}
-        />
+        /> */}
       </Tab.Navigator>
   ); 
 }
